@@ -55,6 +55,7 @@ CREATE TABLE PACIENTE (
     nombre  VARCHAR(100) NOT NULL,
 	fecha_nacimiento DATETIME NOT NULL,
     numero_seguridad_social VARCHAR(20) NOT NULL,
+	sexo VARCHAR(10) NOT NULL
 );
 
 ---- Crear tabla HISTORIA_CLINICA
@@ -72,7 +73,7 @@ CREATE TABLE VISITA (
     tratamiento VARCHAR(255) NOT NULL,
     fecha_ingreso DATETIME NOT NULL,
     fecha_salida DATETIME NOT NULL,
-    nro_havitacion int NOT NULL,   
+    nro_habitacion int NOT NULL,   
 	
     medico_hospital_servicio_id INT NOT NULL CONSTRAINT FK_VISITA_MEDICO_HOSPITAL_SERVICIO FOREIGN KEY REFERENCES MEDICO_HOSPITAL_SERVICIO(id),
     historial_clinico_id INT NOT NULL CONSTRAINT FK_VISITA_HISTORIAL_CLINICO FOREIGN KEY REFERENCES HISTORIAL_CLINICO(id),
