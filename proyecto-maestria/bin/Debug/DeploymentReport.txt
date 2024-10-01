@@ -1,0 +1,33 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a crear con los datos migrados
+       Ninguno
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Ninguno
+
+** Acciones del usuario
+     Crear
+       [dbo].[Historial_Clinico] (Tabla)
+       [dbo].[Hospital] (Tabla)
+       [dbo].[Hospital_Servicio] (Tabla)
+       [dbo].[Medico] (Tabla)
+       [dbo].[Medico_Hospital_Servicio] (Tabla)
+       [dbo].[Paciente] (Tabla)
+       [dbo].[Servicio] (Tabla)
+       [dbo].[Visita] (Tabla)
+       Clave externa: restricción sin nombre en [dbo].[Historial_Clinico] (Clave externa)
+       Clave externa: restricción sin nombre en [dbo].[Hospital] (Clave externa)
+       Clave externa: restricción sin nombre en [dbo].[Hospital_Servicio] (Clave externa)
+       Clave externa: restricción sin nombre en [dbo].[Hospital_Servicio] (Clave externa)
+       Clave externa: restricción sin nombre en [dbo].[Medico_Hospital_Servicio] (Clave externa)
+       Clave externa: restricción sin nombre en [dbo].[Medico_Hospital_Servicio] (Clave externa)
+       Clave externa: restricción sin nombre en [dbo].[Visita] (Clave externa)
+       Clave externa: restricción sin nombre en [dbo].[Visita] (Clave externa)
+
+** Acciones de compatibilidad
+
+Las bases de datos del proyecto y de destino tienen una configuración de intercalación diferente. Se pueden producir errores de implementación.
+

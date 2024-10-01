@@ -1,0 +1,10 @@
+G:\ddl-data\proyecto-maestria\proyecto-maestria\bin\Debug\proyecto-maestria.dacpac
+G:\ddl-data\proyecto-maestria\proyecto-maestria\bin\Debug\proyecto_maestria.dll
+G:\ddl-data\proyecto-maestria\proyecto-maestria\bin\Debug\proyecto_maestria.pdb
+G:\ddl-data\proyecto-maestria\proyecto-maestria\obj\Debug\proyecto-maestria.sqlproj.AssemblyReference.cache
+G:\ddl-data\proyecto-maestria\proyecto-maestria\obj\Debug\Model.xml
+G:\ddl-data\proyecto-maestria\proyecto-maestria\obj\Debug\refactor.xml
+G:\ddl-data\proyecto-maestria\proyecto-maestria\obj\Debug\postdeploy.sql
+G:\ddl-data\proyecto-maestria\proyecto-maestria\obj\Debug\predeploy.sql
+G:\ddl-data\proyecto-maestria\proyecto-maestria\obj\Debug\proyecto_maestria.dll
+G:\ddl-data\proyecto-maestria\proyecto-maestria\obj\Debug\proyecto_maestria.pdb
