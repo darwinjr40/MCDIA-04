@@ -1,5 +1,8 @@
-﻿CREATE TABLE [dbo].[Historial_Clinico] (
-    [Id] INT NOT NULL PRIMARY KEY,
-    [Paciente_Id] INT NOT NULL FOREIGN KEY REFERENCES [dbo].[Paciente]([Id]),
-    [Codigo] VARCHAR(20) NOT NULL
+﻿CREATE TABLE [dbo].[HISTORIAL_CLINICO] (
+    [id]          INT          NOT NULL,
+    [paciente_id] INT          NOT NULL,
+    [codigo]      VARCHAR (20) NOT NULL,
+    CONSTRAINT [PK_HISTORIAL_CLINICO] PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [FK_PACIENTE] FOREIGN KEY ([paciente_id]) REFERENCES [dbo].[PACIENTE] ([id])
 );
+

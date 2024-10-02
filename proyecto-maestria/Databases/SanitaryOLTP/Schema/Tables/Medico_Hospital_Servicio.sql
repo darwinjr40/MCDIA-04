@@ -1,5 +1,9 @@
-﻿CREATE TABLE [dbo].[Medico_Hospital_Servicio] (
-    [Id] INT NOT NULL PRIMARY KEY,
-    [Hospital_Servicio_Id] INT NOT NULL FOREIGN KEY REFERENCES [dbo].[Hospital_Servicio]([Id]),
-    [Medico_Id] INT NOT NULL FOREIGN KEY REFERENCES [dbo].[Medico]([Id])
+﻿CREATE TABLE [dbo].[MEDICO_HOSPITAL_SERVICIO] (
+    [id]                   INT NOT NULL,
+    [hospital_servicio_id] INT NOT NULL,
+    [medico_id]            INT NOT NULL,
+    CONSTRAINT [PK_MEDICO_HOSPITAL_SERVICIO] PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [FK_MEDICO_HOSPITAL_SERVICIO_HOSPITAL_SERVICIO] FOREIGN KEY ([hospital_servicio_id]) REFERENCES [dbo].[HOSPITAL_SERVICIO] ([id]),
+    CONSTRAINT [FK_MEDICO_HOSPITAL_SERVICIO_MEDIO] FOREIGN KEY ([medico_id]) REFERENCES [dbo].[MEDICO] ([id])
 );
+

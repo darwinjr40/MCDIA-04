@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="proyecto_maestria.dll" />
-			<Metadata Name="FileName" Value="G:\DDL-DATA\PROYECTO-MAESTRIA\PROYECTO-MAESTRIA\OBJ\DEBUG\PROYECTO_MAESTRIA.DLL" />
+			<Metadata Name="FileName" Value="G:\DDL-DATA-DEFINITION-SANITARIO\PROYECTO-MAESTRIA\OBJ\DEBUG\PROYECTO_MAESTRIA.DLL" />
 			<Metadata Name="AssemblyName" Value="proyecto_maestria" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="G:\ddl-data\proyecto-maestria\proyecto-maestria\obj\Debug\proyecto_maestria.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="G:\ddl-data-definition-sanitario\proyecto-maestria\obj\Debug\proyecto_maestria.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>
@@ -44,347 +44,214 @@
 				</Entry>
 			</Relationship>
 		</Element>
-		<Element Type="SqlForeignKeyConstraint">
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_HOSPITAL_MEDICO]">
 			<Relationship Name="Columns">
 				<Entry>
-					<References Name="[dbo].[Medico_Hospital_Servicio].[Hospital_Servicio_Id]" />
+					<References Name="[dbo].[HOSPITAL].[medico_id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Medico_Hospital_Servicio]" />
+					<References Name="[dbo].[HOSPITAL]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignColumns">
 				<Entry>
-					<References Name="[dbo].[Hospital_Servicio].[Id]" />
+					<References Name="[dbo].[MEDICO].[id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignTable">
 				<Entry>
-					<References Name="[dbo].[Hospital_Servicio]" />
+					<References Name="[dbo].[MEDICO]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
 		</Element>
-		<Element Type="SqlForeignKeyConstraint">
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_HOSPITAL_SERVICIO_HOSPITAL]">
 			<Relationship Name="Columns">
 				<Entry>
-					<References Name="[dbo].[Medico_Hospital_Servicio].[Medico_Id]" />
+					<References Name="[dbo].[HOSPITAL_SERVICIO].[hospital_id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Medico_Hospital_Servicio]" />
+					<References Name="[dbo].[HOSPITAL_SERVICIO]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignColumns">
 				<Entry>
-					<References Name="[dbo].[Medico].[Id]" />
+					<References Name="[dbo].[HOSPITAL].[id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignTable">
 				<Entry>
-					<References Name="[dbo].[Medico]" />
+					<References Name="[dbo].[HOSPITAL]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
 		</Element>
-		<Element Type="SqlForeignKeyConstraint">
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_HOSPITAL_SERVICIO_SERVICIO]">
 			<Relationship Name="Columns">
 				<Entry>
-					<References Name="[dbo].[Hospital_Servicio].[Servicio_Id]" />
+					<References Name="[dbo].[HOSPITAL_SERVICIO].[servicio_id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Hospital_Servicio]" />
+					<References Name="[dbo].[HOSPITAL_SERVICIO]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignColumns">
 				<Entry>
-					<References Name="[dbo].[Servicio].[Id]" />
+					<References Name="[dbo].[SERVICIO].[id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignTable">
 				<Entry>
-					<References Name="[dbo].[Servicio]" />
+					<References Name="[dbo].[SERVICIO]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
 		</Element>
-		<Element Type="SqlForeignKeyConstraint">
-			<Relationship Name="Columns">
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[FK_MEDICO]">
+			<Relationship Name="ColumnSpecifications">
 				<Entry>
-					<References Name="[dbo].[Hospital_Servicio].[Hospital_Id]" />
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[MEDICO].[id]" />
+							</Entry>
+						</Relationship>
+					</Element>
 				</Entry>
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Hospital_Servicio]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForeignColumns">
-				<Entry>
-					<References Name="[dbo].[Hospital].[Id]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForeignTable">
-				<Entry>
-					<References Name="[dbo].[Hospital]" />
+					<References Name="[dbo].[MEDICO]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
 		</Element>
-		<Element Type="SqlForeignKeyConstraint">
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_MEDICO_HOSPITAL_SERVICIO_HOSPITAL_SERVICIO]">
 			<Relationship Name="Columns">
 				<Entry>
-					<References Name="[dbo].[Hospital].[Medico_Id]" />
+					<References Name="[dbo].[MEDICO_HOSPITAL_SERVICIO].[hospital_servicio_id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Hospital]" />
+					<References Name="[dbo].[MEDICO_HOSPITAL_SERVICIO]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignColumns">
 				<Entry>
-					<References Name="[dbo].[Medico].[Id]" />
+					<References Name="[dbo].[HOSPITAL_SERVICIO].[id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignTable">
 				<Entry>
-					<References Name="[dbo].[Medico]" />
+					<References Name="[dbo].[HOSPITAL_SERVICIO]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
 		</Element>
-		<Element Type="SqlForeignKeyConstraint">
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_MEDICO_HOSPITAL_SERVICIO_MEDIO]">
 			<Relationship Name="Columns">
 				<Entry>
-					<References Name="[dbo].[Historial_Clinico].[Paciente_Id]" />
+					<References Name="[dbo].[MEDICO_HOSPITAL_SERVICIO].[medico_id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Historial_Clinico]" />
+					<References Name="[dbo].[MEDICO_HOSPITAL_SERVICIO]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignColumns">
 				<Entry>
-					<References Name="[dbo].[Paciente].[Id]" />
+					<References Name="[dbo].[MEDICO].[id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignTable">
 				<Entry>
-					<References Name="[dbo].[Paciente]" />
+					<References Name="[dbo].[MEDICO]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
 		</Element>
-		<Element Type="SqlForeignKeyConstraint">
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_PACIENTE]">
 			<Relationship Name="Columns">
 				<Entry>
-					<References Name="[dbo].[Visita].[Medico_Hospital_Servicio_Id]" />
+					<References Name="[dbo].[HISTORIAL_CLINICO].[paciente_id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Visita]" />
+					<References Name="[dbo].[HISTORIAL_CLINICO]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignColumns">
 				<Entry>
-					<References Name="[dbo].[Medico_Hospital_Servicio].[Id]" />
+					<References Name="[dbo].[PACIENTE].[id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignTable">
 				<Entry>
-					<References Name="[dbo].[Medico_Hospital_Servicio]" />
+					<References Name="[dbo].[PACIENTE]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
 		</Element>
-		<Element Type="SqlForeignKeyConstraint">
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VISITA_HISTORIAL_CLINICO]">
 			<Relationship Name="Columns">
 				<Entry>
-					<References Name="[dbo].[Visita].[Historial_Clinico_Id]" />
+					<References Name="[dbo].[VISITA].[historial_clinico_id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Visita]" />
+					<References Name="[dbo].[VISITA]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignColumns">
 				<Entry>
-					<References Name="[dbo].[Historial_Clinico].[Id]" />
+					<References Name="[dbo].[HISTORIAL_CLINICO].[id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignTable">
 				<Entry>
-					<References Name="[dbo].[Historial_Clinico]" />
+					<References Name="[dbo].[HISTORIAL_CLINICO]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
 		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VISITA_MEDICO_HOSPITAL_SERVICIO]">
+			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Servicio].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
+					<References Name="[dbo].[VISITA].[medico_hospital_servicio_id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Servicio]" />
+					<References Name="[dbo].[VISITA]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[MEDICO_HOSPITAL_SERVICIO].[id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[MEDICO_HOSPITAL_SERVICIO]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
 		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Paciente].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Paciente]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Medico_Hospital_Servicio].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Medico_Hospital_Servicio]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Medico].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Medico]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Hospital_Servicio].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Hospital_Servicio]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Hospital].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Hospital]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Historial_Clinico].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Historial_Clinico]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Visita].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Visita]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
-		</Element>
-		<Element Type="SqlTable" Name="[dbo].[Historial_Clinico]">
+		<Element Type="SqlTable" Name="[dbo].[HISTORIAL_CLINICO]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Historial_Clinico].[Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HISTORIAL_CLINICO].[id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -397,11 +264,10 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="17" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Historial_Clinico].[Paciente_Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HISTORIAL_CLINICO].[paciente_id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -414,11 +280,10 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="8" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Historial_Clinico].[Codigo]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HISTORIAL_CLINICO].[codigo]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -440,12 +305,14 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
+			<AttachedAnnotation Disambiguator="9" />
 		</Element>
-		<Element Type="SqlTable" Name="[dbo].[Hospital]">
+		<Element Type="SqlTable" Name="[dbo].[HOSPITAL]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Hospital].[Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HOSPITAL].[id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -458,11 +325,10 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="16" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Hospital].[Cod]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HOSPITAL].[cod]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -479,7 +345,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Hospital].[Nombre]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HOSPITAL].[nombre]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -496,7 +362,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Hospital].[Ciudad]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HOSPITAL].[ciudad]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -513,7 +379,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Hospital].[Telefono]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HOSPITAL].[telefono]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -530,7 +396,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Hospital].[Direccion]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HOSPITAL].[direccion]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -547,7 +413,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Hospital].[Medico_Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HOSPITAL].[medico_id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -560,7 +426,6 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="7" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -569,29 +434,14 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
+			<AttachedAnnotation Disambiguator="3" />
 		</Element>
-		<Element Type="SqlTable" Name="[dbo].[Hospital_Servicio]">
+		<Element Type="SqlTable" Name="[dbo].[HOSPITAL_SERVICIO]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Hospital_Servicio].[Id]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-						<AttachedAnnotation Disambiguator="15" />
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Hospital_Servicio].[Total_Camas]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HOSPITAL_SERVICIO].[id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -607,7 +457,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Hospital_Servicio].[Total_Camas_Libres]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HOSPITAL_SERVICIO].[total_camas]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -623,7 +473,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Hospital_Servicio].[Servicio_Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HOSPITAL_SERVICIO].[total_camas_libres]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -636,11 +486,10 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="5" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Hospital_Servicio].[Hospital_Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HOSPITAL_SERVICIO].[servicio_id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -653,7 +502,22 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="6" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[HOSPITAL_SERVICIO].[hospital_id]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
 					</Element>
 				</Entry>
 			</Relationship>
@@ -662,12 +526,15 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
+			<AttachedAnnotation Disambiguator="4" />
+			<AttachedAnnotation Disambiguator="5" />
 		</Element>
-		<Element Type="SqlTable" Name="[dbo].[Medico]">
+		<Element Type="SqlTable" Name="[dbo].[MEDICO]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Medico].[Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[MEDICO].[id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -680,11 +547,10 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="14" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Medico].[Dni]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[MEDICO].[dni]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -701,7 +567,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Medico].[Nombre]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[MEDICO].[nombre]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -718,7 +584,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Medico].[Apellido]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[MEDICO].[apellido]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -735,7 +601,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Medico].[Fecha_Nacimiento]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[MEDICO].[fecha_nacimiento]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -756,12 +622,13 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<AttachedAnnotation Disambiguator="6" />
 		</Element>
-		<Element Type="SqlTable" Name="[dbo].[Medico_Hospital_Servicio]">
+		<Element Type="SqlTable" Name="[dbo].[MEDICO_HOSPITAL_SERVICIO]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Medico_Hospital_Servicio].[Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[MEDICO_HOSPITAL_SERVICIO].[id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -774,11 +641,10 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="13" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Medico_Hospital_Servicio].[Hospital_Servicio_Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[MEDICO_HOSPITAL_SERVICIO].[hospital_servicio_id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -791,11 +657,10 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="3" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Medico_Hospital_Servicio].[Medico_Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[MEDICO_HOSPITAL_SERVICIO].[medico_id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -808,7 +673,6 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="4" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -817,12 +681,15 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
+			<AttachedAnnotation Disambiguator="7" />
+			<AttachedAnnotation Disambiguator="8" />
 		</Element>
-		<Element Type="SqlTable" Name="[dbo].[Paciente]">
+		<Element Type="SqlTable" Name="[dbo].[PACIENTE]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Paciente].[Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PACIENTE].[id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -835,11 +702,10 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="12" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Paciente].[Dni]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PACIENTE].[dni]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -856,7 +722,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Paciente].[Apellido]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PACIENTE].[apellido]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -873,7 +739,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Paciente].[Nombre]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PACIENTE].[nombre]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -890,7 +756,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Paciente].[Fecha_Nacimiento]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PACIENTE].[fecha_nacimiento]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -906,7 +772,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Paciente].[Numero_Seguridad_Social]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PACIENTE].[numero_seguridad_social]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -923,7 +789,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Paciente].[Sexo]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PACIENTE].[sexo]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -945,12 +811,146 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
 		</Element>
-		<Element Type="SqlTable" Name="[dbo].[Servicio]">
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_HISTORIAL_CLINICO]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[HISTORIAL_CLINICO].[id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[HISTORIAL_CLINICO]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="12" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_HOSPITAL]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[HOSPITAL].[id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[HOSPITAL]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="13" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_HOSPITAL_SERVICIO]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[HOSPITAL_SERVICIO].[id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[HOSPITAL_SERVICIO]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="14" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_MEDICO_HOSPITAL_SERVICIO]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[MEDICO_HOSPITAL_SERVICIO].[id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[MEDICO_HOSPITAL_SERVICIO]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="15" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_PACIENTE]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[PACIENTE].[id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[PACIENTE]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="16" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_SERVICIO]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[SERVICIO].[id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[SERVICIO]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_VISITA]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[VISITA].[id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[VISITA]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[SERVICIO]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Servicio].[Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SERVICIO].[id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -963,11 +963,10 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="11" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Servicio].[Nombre]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SERVICIO].[nombre]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -984,7 +983,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Servicio].[Comentario]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SERVICIO].[comentario]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -1006,12 +1005,13 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<AttachedAnnotation Disambiguator="17" />
 		</Element>
-		<Element Type="SqlTable" Name="[dbo].[Visita]">
+		<Element Type="SqlTable" Name="[dbo].[VISITA]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Visita].[Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[VISITA].[id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -1024,11 +1024,10 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="18" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Visita].[Fecha]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[VISITA].[fecha]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -1044,7 +1043,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Visita].[Diagnostico]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[VISITA].[diagnostico]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -1061,7 +1060,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Visita].[Tratamiento]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[VISITA].[tratamiento]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -1078,7 +1077,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Visita].[Fecha_Ingreso]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[VISITA].[fecha_ingreso]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -1094,7 +1093,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Visita].[Fecha_Salida]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[VISITA].[fecha_salida]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -1110,7 +1109,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Visita].[Nro_Habitacion]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[VISITA].[nro_habitacion]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -1126,7 +1125,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Visita].[Medico_Hospital_Servicio_Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[VISITA].[medico_hospital_servicio_id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -1139,11 +1138,10 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="9" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Visita].[Historial_Clinico_Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[VISITA].[historial_clinico_id]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -1156,7 +1154,6 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="10" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -1165,6 +1162,9 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<AttachedAnnotation Disambiguator="18" />
+			<AttachedAnnotation Disambiguator="10" />
+			<AttachedAnnotation Disambiguator="11" />
 		</Element>
 	</Model>
 </DataSchemaModel>

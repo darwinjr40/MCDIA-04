@@ -61,6 +61,7 @@
     <Folder Include="Databases\SanitaryOLTP\Schema" />
     <Folder Include="Databases\SanitaryOLTP\Schema\Tables" />
     <Folder Include="Databases\SanitaryOLTP\Scripts" />
+    <Folder Include="Databases\SanitaryOLTP\Scripts\StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Medico.sql" />
@@ -71,7 +72,18 @@
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Paciente.sql" />
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Historial_Clinico.sql" />
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Visita.sql" />
-    <Build Include="Databases\SanitaryOLTP\Scripts\pacientes.data.sql" />
-    <Build Include="Databases\SanitaryOLTP\Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Databases\SanitaryOLTP\Scripts\paciente.data.sql" />
+    <None Include="Databases\SanitaryOLTP\Scripts\historial_clinico.data.sql" />
+    <None Include="Databases\SanitaryOLTP\Scripts\hospital.data.sql" />
+    <None Include="Databases\SanitaryOLTP\Scripts\servicio.data.sql" />
+    <None Include="Databases\SanitaryOLTP\Scripts\hospital_servicio.data.sql" />
+    <None Include="Databases\SanitaryOLTP\Scripts\medico_hospital_servicio.data.sql" />
+    <None Include="Databases\SanitaryOLTP\Scripts\visita.data.sql" />
+    <None Include="Databases\SanitaryOLTP\Scripts\StoredProcedures\medico.data.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Databases\SanitaryOLTP\Scripts\Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>

@@ -9,23 +9,6 @@
        Ninguno
 
 ** Acciones del usuario
-     Crear
-       [dbo].[Historial_Clinico] (Tabla)
-       [dbo].[Hospital] (Tabla)
-       [dbo].[Hospital_Servicio] (Tabla)
-       [dbo].[Medico] (Tabla)
-       [dbo].[Medico_Hospital_Servicio] (Tabla)
-       [dbo].[Paciente] (Tabla)
-       [dbo].[Servicio] (Tabla)
-       [dbo].[Visita] (Tabla)
-       Clave externa: restricción sin nombre en [dbo].[Historial_Clinico] (Clave externa)
-       Clave externa: restricción sin nombre en [dbo].[Hospital] (Clave externa)
-       Clave externa: restricción sin nombre en [dbo].[Hospital_Servicio] (Clave externa)
-       Clave externa: restricción sin nombre en [dbo].[Hospital_Servicio] (Clave externa)
-       Clave externa: restricción sin nombre en [dbo].[Medico_Hospital_Servicio] (Clave externa)
-       Clave externa: restricción sin nombre en [dbo].[Medico_Hospital_Servicio] (Clave externa)
-       Clave externa: restricción sin nombre en [dbo].[Visita] (Clave externa)
-       Clave externa: restricción sin nombre en [dbo].[Visita] (Clave externa)
 
 ** Acciones de compatibilidad
 

@@ -1,11 +1,15 @@
-﻿CREATE TABLE [dbo].[Visita] (
-    [Id] INT NOT NULL PRIMARY KEY,
-    [Fecha] DATE NOT NULL,
-    [Diagnostico] VARCHAR(255) NOT NULL,
-    [Tratamiento] VARCHAR(255) NOT NULL,
-    [Fecha_Ingreso] DATETIME NOT NULL,
-    [Fecha_Salida] DATETIME NOT NULL,
-    [Nro_Habitacion] INT NOT NULL,
-    [Medico_Hospital_Servicio_Id] INT NOT NULL FOREIGN KEY REFERENCES [dbo].[Medico_Hospital_Servicio]([Id]),
-    [Historial_Clinico_Id] INT NOT NULL FOREIGN KEY REFERENCES [dbo].[Historial_Clinico]([Id])
+﻿CREATE TABLE [dbo].[VISITA] (
+    [id]                          INT           NOT NULL,
+    [fecha]                       DATE          NOT NULL,
+    [diagnostico]                 VARCHAR (255) NOT NULL,
+    [tratamiento]                 VARCHAR (255) NOT NULL,
+    [fecha_ingreso]               DATETIME      NOT NULL,
+    [fecha_salida]                DATETIME      NOT NULL,
+    [nro_habitacion]              INT           NOT NULL,
+    [medico_hospital_servicio_id] INT           NOT NULL,
+    [historial_clinico_id]        INT           NOT NULL,
+    CONSTRAINT [PK_VISITA] PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [FK_VISITA_HISTORIAL_CLINICO] FOREIGN KEY ([historial_clinico_id]) REFERENCES [dbo].[HISTORIAL_CLINICO] ([id]),
+    CONSTRAINT [FK_VISITA_MEDICO_HOSPITAL_SERVICIO] FOREIGN KEY ([medico_hospital_servicio_id]) REFERENCES [dbo].[MEDICO_HOSPITAL_SERVICIO] ([id])
 );
+
