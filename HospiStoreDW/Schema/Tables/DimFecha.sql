@@ -8,5 +8,5 @@
     [semestre] INT NOT NULL, 
     [name_day] VARCHAR(50) NOT NULL, 
     [number_day_of_week] INT NOT NULL, 
-    [name_month] VARCHAR(50) NOT NULL
+    [name_month] VARCHAR(50) NOT NULL, 
 )
