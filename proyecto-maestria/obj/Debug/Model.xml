@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="proyecto_maestria.dll" />
-			<Metadata Name="FileName" Value="G:\DDL-DATA-DEFINITION-SANITARIO\PROYECTO-MAESTRIA\OBJ\DEBUG\PROYECTO_MAESTRIA.DLL" />
+			<Metadata Name="FileName" Value="D:\MAESTRIA\DATA MANAGEMENT AND BUSINESS INTELLIGENCE\PROYECTO\PROYECTO-MAESTRIA\OBJ\DEBUG\PROYECTO_MAESTRIA.DLL" />
 			<Metadata Name="AssemblyName" Value="proyecto_maestria" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="G:\ddl-data-definition-sanitario\proyecto-maestria\obj\Debug\proyecto_maestria.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="D:\maestria\Data Management and Business Intelligence\proyecto\proyecto-maestria\obj\Debug\proyecto_maestria.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>
