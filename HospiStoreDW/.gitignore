@@ -1,3 +1,5 @@
 bin/
 obj/
 .vs/
+HospiStoreDW.jfm
+HospiStoreDW.dbmdl
