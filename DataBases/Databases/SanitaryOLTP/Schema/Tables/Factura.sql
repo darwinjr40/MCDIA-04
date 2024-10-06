@@ -4,7 +4,6 @@
     [paciente_id] INT NOT NULL,
     [fecha_emision] DATETIME NOT NULL, 
     [total] FLOAT NOT NULL, 
-    [estado] VARBINARY(50) NOT NULL, 
     CONSTRAINT [PK_FACTURA] PRIMARY KEY CLUSTERED ([id] ASC),
     CONSTRAINT [FK_FACTURA_PACIENTE] FOREIGN KEY ([paciente_id]) REFERENCES [dbo].[PACIENTE] ([id])
 )
