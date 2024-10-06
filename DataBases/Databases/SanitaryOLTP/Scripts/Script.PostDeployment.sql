@@ -10,7 +10,13 @@ Plantilla de script posterior a la implementación
 --------------------------------------------------------------------------------------
 */
 GO
-delete from visita;
+DELETE FROM DETALLE_FACTURA;
+GO
+DELETE FROM VISITA;
+GO
+DELETE FROM FACTURA;
+GO
+DELETE FROM EXAMEN;
 GO
 delete from MEDICO_HOSPITAL_SERVICIO;
 GO
@@ -44,4 +50,4 @@ GO
 :r .\servicio.data.sql
 :r .\hospital_servicio.data.sql
 :r .\medico_hospital_servicio.data.sql
-:r .\visita.data.sql
+--:r .\visita.data.sql

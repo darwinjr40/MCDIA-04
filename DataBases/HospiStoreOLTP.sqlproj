@@ -72,6 +72,9 @@
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Paciente.sql" />
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Historial_Clinico.sql" />
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Visita.sql" />
+    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Factura.sql" />
+    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Examen.sql" />
+    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Detalle_Factura.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Databases\SanitaryOLTP\Scripts\paciente.data.sql" />
@@ -85,5 +88,8 @@
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Databases\SanitaryOLTP\Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="HospiStoreOLTP.refactorlog" />
   </ItemGroup>
 </Project>
