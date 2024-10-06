@@ -10,7 +10,9 @@ Plantilla de script posterior a la implementación
 --------------------------------------------------------------------------------------
 */
 GO
-DELETE FROM DETALLE_FACTURA;
+DELETE FROM HOSPITAL_EXAMEN;
+GO
+DELETE FROM HOSPITAL_EXAMEN_VISITA;
 GO
 DELETE FROM VISITA;
 GO

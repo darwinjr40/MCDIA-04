@@ -74,7 +74,8 @@
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Visita.sql" />
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Factura.sql" />
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Examen.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Detalle_Factura.sql" />
+    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Hospital_Examen.sql" />
+    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Hospital_Examen_Visita.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Databases\SanitaryOLTP\Scripts\paciente.data.sql" />

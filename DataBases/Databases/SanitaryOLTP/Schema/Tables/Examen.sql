@@ -3,7 +3,6 @@
 	[Id] INT NOT NULL, 
     [nombre] VARCHAR(100) NOT NULL, 
     [descripcion] VARCHAR(100) NOT NULL, 
-    [costo] FLOAT NOT NULL,
     CONSTRAINT [PK_EXAMEN] PRIMARY KEY CLUSTERED ([id] ASC),
 
 )
