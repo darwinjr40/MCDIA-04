@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[DimFecha]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[id] INT NOT NULL PRIMARY KEY, 
     [año] SMALLINT NOT NULL, 
     [mes] TINYINT NOT NULL, 
     [dia] TINYINT NOT NULL, 

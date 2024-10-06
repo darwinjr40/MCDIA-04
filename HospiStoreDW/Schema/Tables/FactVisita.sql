@@ -11,10 +11,9 @@
     cantidad int,                                
     monto_total decimal(10, 2),                  
 
-    constraint fk_fact_visita_servicio foreign key (servicio_sk) references dimservicios(servicios_sk),
-    constraint fk_fact_visita_medico foreign key (medico_sk) references dimmedico(medico_sk),
-    constraint fk_fact_visita_hospital foreign key (hospital_sk) references dimhospital(hospital_sk),
-    --constraint fk_fact_visita_paciente foreign key (paciente_sk) references dimhistorialclinico(paciente_sk),
-    --constraint fk_fact_visita_historial foreign key (historial_clinico_sk) references dimhistorialclinico(historial_clinico_sk),
-    --constraint fk_fact_visita_fecha foreign key (fecha_sk) references dimfecha(fecha_sk)
+    constraint fk_fact_visita_servicio foreign key (servicio_sk) references DimServicios(servicios_sk),
+    constraint fk_fact_visita_medico foreign key (medico_sk) references DimMedico(medico_sk),
+    constraint fk_fact_visita_hospital foreign key (hospital_sk) references DimHospital(hospital_sk),
+    constraint fk_fact_visita_historial_clinico foreign key (paciente_sk) references DimHistorialClinico(historial_clinico_sk),
+    constraint fk_fact_visita_fecha foreign key (fecha_sk) references DimFecha(id)
 );
