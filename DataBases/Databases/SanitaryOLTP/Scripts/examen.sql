@@ -1,0 +1,21 @@
+﻿
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (1, 'Hemograma Completo', 'Examen de sangre que mide componentes principales como glóbulos rojos, blancos y plaquetas');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (2, 'Examen de Glucosa', 'Medición del nivel de azúcar en la sangre');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (3, 'Examen de Colesterol', 'Mide los niveles de colesterol en la sangre');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (4, 'Radiografía de Tórax', 'Imágenes del tórax para detectar problemas pulmonares o cardíacos');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (5, 'Electrocardiograma', 'Medición de la actividad eléctrica del corazón');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (6, 'Tomografía Computarizada', 'Estudio de imágenes detalladas del interior del cuerpo');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (7, 'Resonancia Magnética', 'Examen para obtener imágenes detalladas de órganos y tejidos');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (8, 'Prueba de Función Hepática', 'Mide los niveles de enzimas hepáticas en la sangre');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (9, 'Examen de Orina', 'Evaluación de componentes químicos y células en la orina');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (10, 'Prueba de Embarazo', 'Detección de la hormona hCG para confirmar un embarazo');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (11, 'Urocultivo', 'Análisis microbiológico de la orina para detectar infecciones');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (12, 'Ecografía Abdominal', 'Imágenes del abdomen para evaluar órganos como el hígado y riñones');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (13, 'Test de Papanicolaou', 'Detección de células anormales en el cuello uterino');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (14, 'Examen de TSH', 'Medición de la hormona estimulante de la tiroides');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (15, 'Prueba de VIH', 'Detección de anticuerpos del VIH en la sangre');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (16, 'Prueba de Función Renal', 'Mide la capacidad de los riñones para filtrar la sangre');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (17, 'Prueba de Coagulación', 'Evalúa la capacidad de la sangre para coagular adecuadamente');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (18, 'Audiometría', 'Examen que mide la capacidad auditiva');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (19, 'Espirometría', 'Mide la capacidad y el flujo de aire de los pulmones');
+INSERT INTO EXAMEN (id, nombre, descripcion) VALUES (20, 'Cultivo de Garganta', 'Prueba para detectar infecciones bacterianas en la garganta');

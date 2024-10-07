@@ -86,6 +86,7 @@
     <None Include="Databases\SanitaryOLTP\Scripts\medico_hospital_servicio.data.sql" />
     <None Include="Databases\SanitaryOLTP\Scripts\visita.data.sql" />
     <None Include="Databases\SanitaryOLTP\Scripts\StoredProcedures\medico.data.sql" />
+    <None Include="Databases\SanitaryOLTP\Scripts\examen.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Databases\SanitaryOLTP\Scripts\Script.PostDeployment.sql" />

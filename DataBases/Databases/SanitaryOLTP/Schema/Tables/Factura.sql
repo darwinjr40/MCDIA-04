@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[FACTURA]
 (
-	[Id] INT NOT NULL, 
+	[id] INT NOT NULL, 
     [visita_id] INT NOT NULL,
     [fecha_emision] DATETIME NOT NULL, 
     [total] FLOAT NOT NULL, 
