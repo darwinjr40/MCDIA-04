@@ -1,0 +1,5 @@
+bin/
+obj/
+.vs/
+HospiStoreOLTP.jfm
+HospiStoreOLTP.dbmdl
