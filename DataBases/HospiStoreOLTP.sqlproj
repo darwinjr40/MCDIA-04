@@ -56,43 +56,41 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Databases" />
-    <Folder Include="Databases\SanitaryOLTP" />
-    <Folder Include="Databases\SanitaryOLTP\Schema" />
-    <Folder Include="Databases\SanitaryOLTP\Schema\Tables" />
-    <Folder Include="Databases\SanitaryOLTP\Scripts" />
-    <Folder Include="Databases\SanitaryOLTP\Scripts\StoredProcedures" />
+    <Folder Include="Schema" />
+    <Folder Include="Schema\Tables" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Medico.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Servicio.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Hospital.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Hospital_Servicio.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Medico_Hospital_Servicio.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Paciente.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Historial_Clinico.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Visita.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Factura.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Examen.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Hospital_Servicio_Examen.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Hospital_Servicio_Examen_Visita.sql" />
+    <Build Include="Schema\Tables\Examen.sql" />
+    <Build Include="Schema\Tables\Factura.sql" />
+    <Build Include="Schema\Tables\Historial_Clinico.sql" />
+    <Build Include="Schema\Tables\Hospital.sql" />
+    <Build Include="Schema\Tables\Hospital_Servicio.sql" />
+    <Build Include="Schema\Tables\Hospital_Servicio_Examen.sql" />
+    <Build Include="Schema\Tables\Hospital_Servicio_Examen_Visita.sql" />
+    <Build Include="Schema\Tables\Medico.sql" />
+    <Build Include="Schema\Tables\Medico_Hospital_Servicio.sql" />
+    <Build Include="Schema\Tables\Paciente.sql" />
+    <Build Include="Schema\Tables\Servicio.sql" />
+    <Build Include="Schema\Tables\Visita.sql" />
+    <None Include="Scripts\examen.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Databases\SanitaryOLTP\Scripts\paciente.data.sql" />
-    <None Include="Databases\SanitaryOLTP\Scripts\historial_clinico.data.sql" />
-    <None Include="Databases\SanitaryOLTP\Scripts\hospital.data.sql" />
-    <None Include="Databases\SanitaryOLTP\Scripts\servicio.data.sql" />
-    <None Include="Databases\SanitaryOLTP\Scripts\hospital_servicio.data.sql" />
-    <None Include="Databases\SanitaryOLTP\Scripts\medico_hospital_servicio.data.sql" />
-    <None Include="Databases\SanitaryOLTP\Scripts\visita.data.sql" />
-    <None Include="Databases\SanitaryOLTP\Scripts\StoredProcedures\medico.data.sql" />
-    <None Include="Databases\SanitaryOLTP\Scripts\examen.sql" />
-    <None Include="Databases\SanitaryOLTP\Scripts\hospital_servicio_examen.data.sql" />
-    <None Include="Databases\SanitaryOLTP\Scripts\factura.data.sql" />
-    <None Include="Databases\SanitaryOLTP\Scripts\hospital_servicio_examen_visita.data.sql" />
+    <None Include="Scripts\StoredProcedures\medico.data.sql" />
+    <None Include="Scripts\factura.data.sql" />
+    <None Include="Scripts\historial_clinico.data.sql" />
+    <None Include="Scripts\hospital.data.sql" />
+    <None Include="Scripts\hospital_servicio.data.sql" />
+    <None Include="Scripts\hospital_servicio_examen.data.sql" />
+    <None Include="Scripts\hospital_servicio_examen_visita.data.sql" />
+    <None Include="Scripts\medico_hospital_servicio.data.sql" />
+    <None Include="Scripts\paciente.data.sql" />
+    <None Include="Scripts\servicio.data.sql" />
+    <None Include="Scripts\visita.data.sql" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="Databases\SanitaryOLTP\Scripts\Script.PostDeployment.sql" />
+    <None Include="Scripts\Script.PostDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HospiStoreOLTP.refactorlog" />
