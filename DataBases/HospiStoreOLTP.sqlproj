@@ -74,8 +74,8 @@
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Visita.sql" />
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Factura.sql" />
     <Build Include="Databases\SanitaryOLTP\Schema\Tables\Examen.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Hospital_Examen.sql" />
-    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Hospital_Examen_Visita.sql" />
+    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Hospital_Servicio_Examen.sql" />
+    <Build Include="Databases\SanitaryOLTP\Schema\Tables\Hospital_Servicio_Examen_Visita.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Databases\SanitaryOLTP\Scripts\paciente.data.sql" />
@@ -87,6 +87,9 @@
     <None Include="Databases\SanitaryOLTP\Scripts\visita.data.sql" />
     <None Include="Databases\SanitaryOLTP\Scripts\StoredProcedures\medico.data.sql" />
     <None Include="Databases\SanitaryOLTP\Scripts\examen.sql" />
+    <None Include="Databases\SanitaryOLTP\Scripts\hospital_servicio_examen.data.sql" />
+    <None Include="Databases\SanitaryOLTP\Scripts\factura.data.sql" />
+    <None Include="Databases\SanitaryOLTP\Scripts\hospital_servicio_examen_visita.data.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Databases\SanitaryOLTP\Scripts\Script.PostDeployment.sql" />
