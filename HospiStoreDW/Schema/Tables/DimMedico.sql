@@ -1,7 +1,9 @@
-﻿CREATE TABLE DimMedico (
-    medico_sk INT IDENTITY(1,1) PRIMARY KEY,  
-    medico_id INT,
-    nombre VARCHAR(255),                      
-    apellido VARCHAR(255),                    
-    fecha_de_nacimiento DATE                 
+﻿CREATE TABLE dim_medico (
+    id INT NOT NULL, 
+    medico_sk INT PRIMARY KEY, 
+    dni VARCHAR(20),
+    nombre VARCHAR(100),
+    apellido VARCHAR(100),
+    fecha_nacimiento DATE,
+    UNIQUE(id) 
 );

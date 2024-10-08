@@ -1,6 +1,7 @@
-﻿CREATE TABLE [dbo].[DimExamen]
-(
-	[examen_sk] INT NOT NULL PRIMARY KEY,
-	[examen_id] INT NOT NULL,
-    [nombre] VARCHAR(100) NOT NULL, 
-)
+﻿CREATE TABLE dim_examen (
+    id INT NOT NULL,
+    examen_sk INT PRIMARY KEY, 
+    nombre VARCHAR(100),
+    descripcion VARCHAR(255),
+    UNIQUE(id)
+);

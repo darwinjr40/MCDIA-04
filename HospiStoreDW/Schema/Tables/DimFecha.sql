@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[DimFecha]
+﻿CREATE TABLE [dbo].[dim_fecha]
 (
 	[id] INT NOT NULL PRIMARY KEY, 
     [año] SMALLINT NOT NULL, 

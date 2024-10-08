@@ -61,14 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema\Tables\DimExamen.sql" />
-    <Build Include="Schema\Tables\DimVisita.sql" />
     <Build Include="Schema\Tables\DimFecha.sql" />
-    <Build Include="Schema\Tables\FacFactura.sql" />
-    <Build Include="Schema\Tables\DimHospital.sql" />
     <Build Include="Schema\Tables\DimMedico.sql" />
     <Build Include="Schema\Tables\DimHistorialClinico.sql" />
-    <Build Include="Schema\Tables\DimServicios.sql" />
-    <Build Include="Schema\Tables\FactVisita.sql" />
+    <Build Include="Schema\Tables\DimHospitalServicio.sql" />
+    <Build Include="Schema\Tables\FactVisitaFactura.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HospiStoreDW.refactorlog" />

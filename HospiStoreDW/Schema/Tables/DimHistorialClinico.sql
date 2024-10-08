@@ -1,8 +1,13 @@
-﻿CREATE TABLE DimHistorialClinico (
-    historial_clinico_sk INT IDENTITY(1,1) PRIMARY KEY,
-    historial_clinico_id INT,
-    nombre VARCHAR(255),                  
-    apellido VARCHAR(255),                
-    fecha_de_nacimiento DATE,             
-    numero_seguridad_social VARCHAR(50)   
+﻿CREATE TABLE dim_paciente_historial (
+    id INT NOT NULL,
+    paciente_id INT NOT NULL,
+    paciente_historial_sk INT PRIMARY KEY,
+    dni VARCHAR(20),
+    apellido VARCHAR(100),
+    nombre VARCHAR(100),
+    fecha_nacimiento DATE,
+    numero_seguridad_social VARCHAR(20),
+    sexo CHAR(1),
+    codigo_historial_clinico VARCHAR(50), 
+    UNIQUE(id) 
 );
