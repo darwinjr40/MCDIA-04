@@ -8,6 +8,7 @@
     [nro_habitacion]              INT           NOT NULL,
     [medico_hospital_servicio_id] INT           NOT NULL,
     [historial_clinico_id]        INT           NOT NULL,
+    rowversion TIMESTAMP NOT NULL,
     CONSTRAINT [PK_VISITA] PRIMARY KEY CLUSTERED ([id] ASC),
     CONSTRAINT [FK_VISITA_HISTORIAL_CLINICO] FOREIGN KEY ([historial_clinico_id]) REFERENCES [dbo].[HISTORIAL_CLINICO] ([id]),
     CONSTRAINT [FK_VISITA_MEDICO_HOSPITAL_SERVICIO] FOREIGN KEY ([medico_hospital_servicio_id]) REFERENCES [dbo].[MEDICO_HOSPITAL_SERVICIO] ([id])
