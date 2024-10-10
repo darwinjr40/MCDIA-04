@@ -11,33 +11,33 @@
   DTS:LocaleID="16394"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{6F06A899-3927-4B73-BB78-AB1A5E56D904}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{6D54ACF2-9E70-4569-8AFD-F2855E0EE7CE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.HospiStoreDW]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{BD3A77D2-65ED-4E8F-9FBE-E957B3028230}"
-      DTS:ObjectName="localhost.HospiStoreDW">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreDW;Provider=SQLNCLIRDA11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{BD3A77D2-65ED-4E8F-9FBE-E957B3028230}localhost.HospiStoreDW;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.HospiStoreOLTP]"
+      DTS:refId="Package.ConnectionManagers[Source.HospiStoreOLTP]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{30F5CAAE-49FF-4EF1-A9A8-1717E516D2A8}"
-      DTS:ObjectName="localhost.HospiStoreOLTP">
+      DTS:ObjectName="Source.HospiStoreOLTP">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreOLTP;Provider=SQLNCLIRDA11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{30F5CAAE-49FF-4EF1-A9A8-1717E516D2A8}localhost.HospiStoreOLTP;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target.HospiStoreDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BD3A77D2-65ED-4E8F-9FBE-E957B3028230}"
+      DTS:ObjectName="Target.HospiStoreDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreDW;Provider=SQLNCLIRDA11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{BD3A77D2-65ED-4E8F-9FBE-E957B3028230}localhost.HospiStoreDW;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
