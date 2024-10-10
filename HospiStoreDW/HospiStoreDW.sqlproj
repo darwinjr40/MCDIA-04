@@ -66,6 +66,7 @@
     <Build Include="Schema\Tables\DimHistorialClinico.sql" />
     <Build Include="Schema\Tables\DimHospitalServicio.sql" />
     <Build Include="Schema\Tables\FactVisitaFactura.sql" />
+    <Build Include="Schema\Tables\PackageConfig.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HospiStoreDW.refactorlog" />
