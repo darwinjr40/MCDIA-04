@@ -16,18 +16,25 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Development|Any CPU = Development|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{24E0166D-33EE-4923-9526-6D9E2C17C728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{24E0166D-33EE-4923-9526-6D9E2C17C728}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24E0166D-33EE-4923-9526-6D9E2C17C728}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{24E0166D-33EE-4923-9526-6D9E2C17C728}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{24E0166D-33EE-4923-9526-6D9E2C17C728}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{24E0166D-33EE-4923-9526-6D9E2C17C728}.Development|Any CPU.Deploy.0 = Debug|Any CPU
 		{24E0166D-33EE-4923-9526-6D9E2C17C728}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24E0166D-33EE-4923-9526-6D9E2C17C728}.Release|Any CPU.Build.0 = Release|Any CPU
 		{24E0166D-33EE-4923-9526-6D9E2C17C728}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{E2ED7256-35BD-4E61-A63A-8E1DFE69344E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E2ED7256-35BD-4E61-A63A-8E1DFE69344E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2ED7256-35BD-4E61-A63A-8E1DFE69344E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E2ED7256-35BD-4E61-A63A-8E1DFE69344E}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2ED7256-35BD-4E61-A63A-8E1DFE69344E}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{E2ED7256-35BD-4E61-A63A-8E1DFE69344E}.Development|Any CPU.Deploy.0 = Debug|Any CPU
 		{E2ED7256-35BD-4E61-A63A-8E1DFE69344E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2ED7256-35BD-4E61-A63A-8E1DFE69344E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E2ED7256-35BD-4E61-A63A-8E1DFE69344E}.Release|Any CPU.Deploy.0 = Release|Any CPU

@@ -60,6 +60,8 @@
     <Folder Include="Schema\Tables" />
     <Folder Include="Scripts" />
     <Folder Include="Scripts\StoredProcedures" />
+    <Folder Include="Schema\Programmability" />
+    <Folder Include="Schema\Programmability\StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema\Tables\Examen.sql" />
@@ -75,6 +77,7 @@
     <Build Include="Schema\Tables\Servicio.sql" />
     <Build Include="Schema\Tables\Visita.sql" />
     <None Include="Scripts\examen.sql" />
+    <None Include="Schema\Programmability\StoredProcedures\GetDatabaseRowVersion.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\StoredProcedures\medico.data.sql" />
