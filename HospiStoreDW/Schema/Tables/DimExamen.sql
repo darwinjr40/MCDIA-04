@@ -1,7 +1,7 @@
 ﻿CREATE TABLE dim_examen (
-    id INT NOT NULL,
-    examen_sk INT PRIMARY KEY, 
+    examen_sk INT PRIMARY KEY,
+    examen_id INT NOT NULL,     
     nombre VARCHAR(100),
     descripcion VARCHAR(255),
-    UNIQUE(id)
+    UNIQUE(examen_id)
 );
