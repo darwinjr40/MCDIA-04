@@ -58,17 +58,28 @@
     <Folder Include="Properties" />
     <Folder Include="Schema" />
     <Folder Include="Schema\Tables" />
+    <Folder Include="Schema\Programmability" />
+    <Folder Include="Schema\Programmability\Stored Procedures" />
+    <Folder Include="Schema\Tables\staging" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema\Tables\DimExamen.sql" />
     <Build Include="Schema\Tables\DimFecha.sql" />
     <Build Include="Schema\Tables\DimMedico.sql" />
-    <Build Include="Schema\Tables\DimHistorialClinico.sql" />
+    <Build Include="Schema\Tables\DimPacienteHistorial.sql" />
     <Build Include="Schema\Tables\DimHospitalServicio.sql" />
     <Build Include="Schema\Tables\FactVisitaFactura.sql" />
     <Build Include="Schema\Tables\PackageConfig.sql" />
+    <Build Include="Schema\Tables\staging\staging.examen.sql" />
+    <Build Include="Schema\Tables\staging\staging.PacienteHistorial.sql" />
+    <Build Include="Schema\Tables\staging\staging.HospitalServicio.sql" />
+    <Build Include="Schema\Tables\staging\staging.medico.sql" />
+    <Build Include="Schema\Tables\staging\staging.VisitaFactura.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HospiStoreDW.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Schema\Programmability\Stored Procedures\GetLastPackageRowVersion.sql" />
   </ItemGroup>
 </Project>
