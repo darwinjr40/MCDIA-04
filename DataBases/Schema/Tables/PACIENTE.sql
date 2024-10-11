@@ -6,6 +6,7 @@
     [fecha_nacimiento]        DATETIME      NOT NULL,
     [numero_seguridad_social] VARCHAR (20)  NOT NULL,
     [sexo]                    VARCHAR (10)  NOT NULL,
+    rowversion TIMESTAMP NOT NULL,
     CONSTRAINT [PK_PACIENTE] PRIMARY KEY CLUSTERED ([id] ASC)
 );
 
