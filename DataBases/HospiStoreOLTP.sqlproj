@@ -81,6 +81,7 @@
     <Build Include="Schema\Programmability\Stored Procedures\dbo.GetMedicoChangesByRowVersion.sql" />
     <Build Include="Schema\Programmability\Stored Procedures\dbo.GetExamenChangesByRowVersion.sql" />
     <Build Include="Schema\Programmability\Stored Procedures\dbo.GetPacienteHistorialChangesByRowVersion.sql" />
+    <Build Include="Schema\Programmability\Stored Procedures\dbo.GetVisitaFacturaChangesByRowVersion.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\StoredProcedures\medico.data.sql" />
