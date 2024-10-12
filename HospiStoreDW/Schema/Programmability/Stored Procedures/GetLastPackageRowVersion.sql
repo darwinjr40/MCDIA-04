@@ -4,8 +4,8 @@
 )
   AS
   BEGIN
-	SELECT LastRowVersion
-	FROM [dbo].[PackageConfig]
-	WHERE TableName = @tableName;
+	SELECT Last_Row_Version
+	FROM [dbo].[Package_Config]
+	WHERE Table_Name = @tableName;
   END
 GO

@@ -1,5 +1,5 @@
 ﻿CREATE TABLE dim_hospital_servicio (
-    hospital_servicio_sk INT PRIMARY KEY, 
+    hospital_servicio_sk INT PRIMARY KEY IDENTITY(1,1), 
     hospital_servicio_id INT NOT NULL,     
     nombre_hospital VARCHAR(255), 
     ciudad_hospital VARCHAR(100), 

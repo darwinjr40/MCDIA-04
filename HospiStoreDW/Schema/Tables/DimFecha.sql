@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[dim_fecha]
 (
-	[fecha_id] INT NOT NULL PRIMARY KEY, 
+	[fecha_id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [año] SMALLINT NOT NULL, 
     [mes] TINYINT NOT NULL, 
     [dia] TINYINT NOT NULL, 

@@ -61,6 +61,7 @@
     <Folder Include="Schema\Programmability" />
     <Folder Include="Schema\Programmability\Stored Procedures" />
     <Folder Include="Schema\Tables\staging" />
+    <Folder Include="scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema\Tables\DimExamen.sql" />
@@ -75,11 +76,16 @@
     <Build Include="Schema\Tables\staging\staging.HospitalServicio.sql" />
     <Build Include="Schema\Tables\staging\staging.medico.sql" />
     <Build Include="Schema\Tables\staging\staging.VisitaFactura.sql" />
+    <Build Include="Schema\Programmability\Stored Procedures\UpdateLastPackageRowVersion.sql" />
+    <Build Include="Schema\Programmability\Stored Procedures\DW_MergeDimMedico.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HospiStoreDW.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema\Programmability\Stored Procedures\GetLastPackageRowVersion.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="scripts\PackageConfig.data.sql" />
   </ItemGroup>
 </Project>

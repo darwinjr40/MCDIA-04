@@ -1,5 +1,5 @@
 ﻿CREATE TABLE fact_visita_factura (    
-    visita_id INT not null PRIMARY KEY,    
+    visita_id INT not null PRIMARY KEY IDENTITY(1,1),    
     hospital_servicio_sk INT,
     medico_sk INT, 
     paciente_historial_sk INT, 
