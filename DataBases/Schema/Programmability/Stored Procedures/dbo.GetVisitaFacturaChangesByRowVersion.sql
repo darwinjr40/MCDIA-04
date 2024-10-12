@@ -8,7 +8,11 @@ BEGIN
     -- Selección de cambios en VISITA y sus facturas relacionadas
     SELECT hsev.[visita_id] AS visita_factura_id,
            v.[id] AS visita_id,
+<<<<<<< HEAD
           hsev.hospital_servicio_examen_id AS examen_id,
+=======
+          
+>>>>>>> 8c996dc026c722501238c64ed020e678621390d2
     v.[diagnostico],
     v.[tratamiento],
 	-- Casteo de la fecha de ingreso (YYYYMMDD)
@@ -52,4 +56,8 @@ BEGIN
            AND f.[rowversion] <= CONVERT(ROWVERSION, @endRow))
 	  OR (hsev.[rowversion] > CONVERT(ROWVERSION, @startRow)
            AND hsev.[rowversion] <= CONVERT(ROWVERSION, @endRow));
+<<<<<<< HEAD
 END
+=======
+END
+>>>>>>> 8c996dc026c722501238c64ed020e678621390d2
