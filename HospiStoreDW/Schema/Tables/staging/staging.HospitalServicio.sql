@@ -1,5 +1,5 @@
 ﻿CREATE TABLE hospital_servicio (
-    hospital_servicio_sk INT,          
+    hospital_servicio_sk INT not null,          
     nombre_hospital VARCHAR(255), 
     ciudad_hospital VARCHAR(100), 
     nombre_servicio VARCHAR(100), 

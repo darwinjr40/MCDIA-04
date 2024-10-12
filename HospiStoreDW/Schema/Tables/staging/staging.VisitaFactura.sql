@@ -1,4 +1,5 @@
 ﻿CREATE TABLE visita_factura (            
+    visita_id INT not null,    
     hospital_servicio_sk INT,
     medico_sk INT, 
     paciente_historial_sk INT, 
@@ -10,5 +11,5 @@
     nro_habitacion INT,
     fecha_ingreso DATE,
     fecha_salida DATE,
-    fecha_id int,    
+    fecha_id int, 
 );
