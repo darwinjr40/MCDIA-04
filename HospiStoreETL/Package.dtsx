@@ -11,33 +11,33 @@
   DTS:LocaleID="16394"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{FC03C854-7F6C-43B8-B7AE-B862E65FCA6C}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{57E6FCA8-1B9C-4069-9DC8-1898A36D0B60}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Source.HospiStoreOLTP]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{30F5CAAE-49FF-4EF1-A9A8-1717E516D2A8}"
+      DTS:DTSID="{8B2AED41-9B00-4F50-A43C-56F774644F8A}"
       DTS:ObjectName="Source.HospiStoreOLTP">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreOLTP;Provider=SQLNCLIRDA11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{30F5CAAE-49FF-4EF1-A9A8-1717E516D2A8}localhost.HospiStoreOLTP;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreOLTP;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{8B2AED41-9B00-4F50-A43C-56F774644F8A}localhost.HospiStoreOLTP;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Target.HospiStoreDW]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{BD3A77D2-65ED-4E8F-9FBE-E957B3028230}"
+      DTS:DTSID="{11908939-1D10-4D3B-BF3A-FE4D7C02A6E1}"
       DTS:ObjectName="Target.HospiStoreDW">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreDW;Provider=SQLNCLIRDA11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{BD3A77D2-65ED-4E8F-9FBE-E957B3028230}localhost.HospiStoreDW;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{11908939-1D10-4D3B-BF3A-FE4D7C02A6E1}localhost.HospiStoreDW;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -75,6 +75,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
+          SQLTask:Connection="{11908939-1D10-4D3B-BF3A-FE4D7C02A6E1}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[medico] ;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -91,7 +92,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{30F5CAAE-49FF-4EF1-A9A8-1717E516D2A8}"
+          SQLTask:Connection="{8B2AED41-9B00-4F50-A43C-56F774644F8A}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[GetDatabaseRowVersion]"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -113,7 +114,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{BD3A77D2-65ED-4E8F-9FBE-E957B3028230}"
+          SQLTask:Connection="{11908939-1D10-4D3B-BF3A-FE4D7C02A6E1}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'medico'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -263,6 +264,10 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="160,42"
+          Id="Package\clean-up staging"
+          TopLeft="315,214" />
+        <NodeLayout
           Size="209,42"
           Id="Package\Get Database RowVersion"
           TopLeft="295,56" />
@@ -271,9 +276,9 @@
           Id="Package\Get LastRowVersion"
           TopLeft="305,132" />
         <NodeLayout
-          Size="160,42"
-          Id="Package\clean-up staging"
-          TopLeft="315,214" />
+          Size="147,42"
+          Id="Package\Load Medicos"
+          TopLeft="330,297" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="397.25,98">
@@ -318,10 +323,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="147,42"
-          Id="Package\Load Medicos"
-          TopLeft="330,297" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
           TopLeft="395,256">
@@ -367,7 +368,7 @@
         <NodeLayout
           Size="170,42"
           Id="Package\Load Medicos\Origen de OLE DB"
-          TopLeft="385,145" />
+          TopLeft="325,153" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
