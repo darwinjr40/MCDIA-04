@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-7UPHGDJ\darwin"
   DTS:DTSID="{1C4C21F4-363E-44DD-BB32-B03CB7CBE755}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
   DTS:LocaleID="16394"
   DTS:ObjectName="DimMedico"
   DTS:PackageType="5"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{1D1B0009-45B3-4FCB-BDA6-77ED8292C0DC}">
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{D2D6561D-646D-4684-A52C-55DD782D2454}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
