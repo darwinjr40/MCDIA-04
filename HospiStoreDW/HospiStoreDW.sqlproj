@@ -79,6 +79,9 @@
     <Build Include="Schema\Programmability\Stored Procedures\UpdateLastPackageRowVersion.sql" />
     <Build Include="Schema\Programmability\Stored Procedures\DW_MergeDimMedico.sql" />
     <Build Include="Schema\Programmability\Stored Procedures\DW_MergeDimExamen.sql" />
+    <Build Include="Schema\Programmability\Stored Procedures\DW_MergeDimHospitalServicio.sql" />
+    <Build Include="Schema\Programmability\Stored Procedures\DW_MergeDimPacienteHistorial.sql" />
+    <Build Include="Schema\Programmability\Stored Procedures\DW_MergeFactVisitaFactura.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HospiStoreDW.refactorlog" />
