@@ -44,3 +44,4 @@ IF NOT EXISTS(SELECT TOP(1) 1
 	INSERT [dbo].[Package_Config] ([Table_Name], [Last_Row_Version]) VALUES ('visita_factura', 0)
  END
 GO
+:r .\DimFechaScript.sql
