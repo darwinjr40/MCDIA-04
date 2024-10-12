@@ -8,7 +8,7 @@ BEGIN
     -- Selección de cambios en VISITA y sus facturas relacionadas
     SELECT hsev.[visita_id] AS visita_factura_id,
            v.[id] AS visita_id,
-          hsev.hospital_servicio_examen_id AS examen_id,
+          
     v.[diagnostico],
     v.[tratamiento],
 	-- Casteo de la fecha de ingreso (YYYYMMDD)
