@@ -79,6 +79,7 @@
     <None Include="Scripts\examen.sql" />
     <Build Include="Schema\Programmability\Stored Procedures\GetDatabaseRowVersion.sql" />
     <Build Include="Schema\Programmability\Stored Procedures\dbo.GetMedicoChangesByRowVersion.sql" />
+    <Build Include="Schema\Programmability\Stored Procedures\dbo.GetExamenChangesByRowVersion.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\StoredProcedures\medico.data.sql" />
