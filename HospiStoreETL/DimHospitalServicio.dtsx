@@ -5,46 +5,46 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-7UPHGDJ"
   DTS:CreatorName="DESKTOP-7UPHGDJ\darwin"
-  DTS:DTSID="{35A0A719-37CA-44BD-80E1-958910794806}"
+  DTS:DTSID="{1168739C-8421-4DB3-A76C-95F434A281FC}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5685.0"
   DTS:LocaleID="16394"
-  DTS:ObjectName="DimExamen"
+  DTS:ObjectName="DimHospitalServicio"
   DTS:PackageType="5"
-  DTS:VersionBuild="75"
-  DTS:VersionGUID="{17799E3C-3AC5-4B93-990D-22344FCACC67}">
+  DTS:VersionBuild="82"
+  DTS:VersionGUID="{1BA08982-0625-416D-94CA-15471F166E57}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Source.HospiStoreOLTP]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{E9410008-BDED-49C1-AD71-8C653647DEFA}"
+      DTS:DTSID="{DE820E95-0980-467E-A8BE-DE2F1B43E1E0}"
       DTS:ObjectName="Source.HospiStoreOLTP">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreOLTP;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{E9410008-BDED-49C1-AD71-8C653647DEFA}localhost.HospiStoreOLTP;" />
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreOLTP;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{DE820E95-0980-467E-A8BE-DE2F1B43E1E0}localhost.HospiStoreOLTP;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Target.HospiStoreDW]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{FEDD6C4B-5958-46CE-AC5A-D7B07C854DDF}"
+      DTS:DTSID="{30BCBE2C-7019-470D-B7FC-0ACC0F0C5496}"
       DTS:ObjectName="Target.HospiStoreDW">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{FEDD6C4B-5958-46CE-AC5A-D7B07C854DDF}localhost.HospiStoreDW;" />
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{30BCBE2C-7019-470D-B7FC-0ACC0F0C5496}localhost.HospiStoreDW;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{D034BA5D-3643-4856-8A9D-E76329B3085F}"
+      DTS:DTSID="{C7457EFA-568F-40D9-B2A5-8B22236F2431}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="dbts">
@@ -53,7 +53,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{183DA099-9444-4E45-8916-0A9E2F398E33}"
+      DTS:DTSID="{F9E2E63A-AC4D-4C36-8E9E-658A640161C7}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="lastRowVersion">
@@ -66,7 +66,7 @@
       DTS:refId="Package\clean-up staging"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{32261DBF-BC36-4017-9952-509392A49251}"
+      DTS:DTSID="{3A5A2AA2-8A80-4212-A9AC-BBC34A186A4C}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="clean-up staging"
@@ -75,15 +75,15 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{FEDD6C4B-5958-46CE-AC5A-D7B07C854DDF}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[examen] ;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{30BCBE2C-7019-470D-B7FC-0ACC0F0C5496}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[hospital_servicio] ;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Get Database RowVersion"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{9C15A80E-2225-49EC-8684-805ED49EA8BB}"
+      DTS:DTSID="{218B85F4-D0DB-4720-AE66-C7C23D26AB00}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Get Database RowVersion"
@@ -92,7 +92,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{E9410008-BDED-49C1-AD71-8C653647DEFA}"
+          SQLTask:Connection="{DE820E95-0980-467E-A8BE-DE2F1B43E1E0}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[GetDatabaseRowVersion]"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -105,7 +105,7 @@
       DTS:refId="Package\Get LastRowVersion"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{4A2EC47C-3259-4FD0-93E6-65A1B1A94626}"
+      DTS:DTSID="{06A5ADE3-1521-4AE1-BAD7-A8AFBE7D058A}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Get LastRowVersion"
@@ -114,8 +114,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{FEDD6C4B-5958-46CE-AC5A-D7B07C854DDF}"
-          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'examen'"
+          SQLTask:Connection="{30BCBE2C-7019-470D-B7FC-0ACC0F0C5496}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'hospital_servicio'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="Last_Row_Version"
@@ -127,7 +127,7 @@
       DTS:refId="Package\Load data"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarea Flujo de datos"
-      DTS:DTSID="{9FFC6C8C-04B3-448B-A540-37960BBBFDEE}"
+      DTS:DTSID="{FE89E295-A7F2-449D-8EEA-153CDE15E538}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Load data"
@@ -151,14 +151,14 @@
                   description="Especifica la instrucción SQL que genera la tabla de búsqueda."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_examen]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_hospital_servicio]</property>
                 <property
                   dataType="System.String"
                   description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_examen]) [refTable]
-where [refTable].[examen_id] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_hospital_servicio]) [refTable]
+where [refTable].[hospital_servicio_id] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
@@ -189,12 +189,12 @@ where [refTable].[examen_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="examen_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hosptal_servicio_examen_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="examen_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="descripcion" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="hospital_servicio_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hospital_servicio_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre_hospital" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ciudad_hospital" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="nombre_servicio" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="total_camas" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="total_camas_libres" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="precio" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[id]};</property>
+                  name="ParameterMap">#{Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[hospital_servicio_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -218,15 +218,15 @@ where [refTable].[examen_id] = ?</property>
                   name="Entrada de búsqueda">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load data\Búsqueda.Inputs[Entrada de búsqueda].Columns[id]"
+                      refId="Package\Load data\Búsqueda.Inputs[Entrada de búsqueda].Columns[hospital_servicio_id]"
                       cachedDataType="i4"
-                      cachedName="id"
-                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[id]">
+                      cachedName="hospital_servicio_id"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[hospital_servicio_id]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Especifica la columna de la tabla de referencia con la que se combina una columna."
-                          name="JoinToReferenceColumn">examen_id</property>
+                          name="JoinToReferenceColumn">hospital_servicio_id</property>
                         <property
                           dataType="System.Null"
                           description="Especifica la columna de la tabla de referencia de la que se copia una columna."
@@ -246,17 +246,17 @@ where [refTable].[examen_id] = ?</property>
                   synchronousInputId="Package\Load data\Búsqueda.Inputs[Entrada de búsqueda]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load data\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[examen_sk]"
+                      refId="Package\Load data\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[hospital_servicio_sk]"
                       dataType="i4"
                       errorOrTruncationOperation="Copiar columna"
-                      lineageId="Package\Load data\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[examen_sk]"
-                      name="examen_sk"
+                      lineageId="Package\Load data\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[hospital_servicio_sk]"
+                      name="hospital_servicio_sk"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">examen_sk</property>
+                          name="CopyFromReferenceColumn">hospital_servicio_sk</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -319,8 +319,8 @@ where [refTable].[examen_id] = ?</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE [dbo].[GetExamenChangesByRowVersion] 
-   @startRow = ?
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE [dbo].[GetHospitalServicioChangesByRowVersion]
+   @startRow= ?
   ,@endRow = ?</property>
                 <property
                   dataType="System.String"
@@ -342,7 +342,7 @@ where [refTable].[examen_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Asignaciones entre los parámetros del comando SQL y las variables."
-                  name="ParameterMapping">"@startRow:Input",{183DA099-9444-4E45-8916-0A9E2F398E33};"@endRow:Input",{D034BA5D-3643-4856-8A9D-E76329B3085F};</property>
+                  name="ParameterMapping">"@startRow:Input",{F9E2E63A-AC4D-4C36-8E9E-658A640161C7};"@endRow:Input",{C7457EFA-568F-40D9-B2A5-8B22236F2431};</property>
               </properties>
               <connections>
                 <connection
@@ -358,55 +358,111 @@ where [refTable].[examen_id] = ?</property>
                   name="Salida de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[id]"
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[hospital_servicio_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[id]"
-                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[id]"
-                      name="id"
+                      externalMetadataColumnId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[hospital_servicio_id]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[hospital_servicio_id]"
+                      name="hospital_servicio_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[nombre]"
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[nombre_hospital]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre]"
+                      externalMetadataColumnId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre_hospital]"
+                      length="50"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[nombre_hospital]"
+                      name="nombre_hospital"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[ciudad_hospital]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[ciudad_hospital]"
+                      length="50"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[ciudad_hospital]"
+                      name="ciudad_hospital"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[nombre_servicio]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre_servicio]"
                       length="100"
-                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[nombre]"
-                      name="nombre"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[nombre_servicio]"
+                      name="nombre_servicio"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[descripcion]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[total_camas]"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[descripcion]"
-                      length="255"
-                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[descripcion]"
-                      name="descripcion"
+                      externalMetadataColumnId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[total_camas]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[total_camas]"
+                      name="total_camas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[total_camas_libres]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[total_camas_libres]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[total_camas_libres]"
+                      name="total_camas_libres"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[precio]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[precio]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[precio]"
+                      name="precio"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[id]"
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[hospital_servicio_id]"
                       dataType="i4"
-                      name="id" />
+                      name="hospital_servicio_id" />
                     <externalMetadataColumn
-                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre]"
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre_hospital]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="nombre_hospital" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[ciudad_hospital]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ciudad_hospital" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre_servicio]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      name="nombre" />
+                      name="nombre_servicio" />
                     <externalMetadataColumn
-                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[descripcion]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="descripcion" />
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[total_camas]"
+                      dataType="i4"
+                      name="total_camas" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[total_camas_libres]"
+                      dataType="i4"
+                      name="total_camas_libres" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].ExternalColumns[precio]"
+                      dataType="r8"
+                      name="precio" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -415,24 +471,46 @@ where [refTable].[examen_id] = ?</property>
                   name="Salida de error de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[id]"
+                      refId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[hospital_servicio_id]"
                       dataType="i4"
-                      lineageId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[id]"
-                      name="id" />
+                      lineageId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[hospital_servicio_id]"
+                      name="hospital_servicio_id" />
                     <outputColumn
-                      refId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[nombre]"
+                      refId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[nombre_hospital]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[nombre_hospital]"
+                      name="nombre_hospital" />
+                    <outputColumn
+                      refId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[ciudad_hospital]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[ciudad_hospital]"
+                      name="ciudad_hospital" />
+                    <outputColumn
+                      refId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[nombre_servicio]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[nombre]"
-                      name="nombre" />
+                      lineageId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[nombre_servicio]"
+                      name="nombre_servicio" />
                     <outputColumn
-                      refId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[descripcion]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      lineageId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[descripcion]"
-                      name="descripcion" />
+                      refId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[total_camas]"
+                      dataType="i4"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[total_camas]"
+                      name="total_camas" />
+                    <outputColumn
+                      refId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[total_camas_libres]"
+                      dataType="i4"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[total_camas_libres]"
+                      name="total_camas_libres" />
+                    <outputColumn
+                      refId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[precio]"
+                      dataType="r8"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[precio]"
+                      name="precio" />
                     <outputColumn
                       refId="Package\Load data\Get data.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -466,7 +544,7 @@ where [refTable].[examen_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[dim_examen]</property>
+                  name="OpenRowset">[dbo].[dim_hospital_servicio]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -523,50 +601,96 @@ where [refTable].[examen_id] = ?</property>
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].Columns[nombre]"
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].Columns[hospital_servicio_id]"
+                      cachedDataType="i4"
+                      cachedName="hospital_servicio_id"
+                      externalMetadataColumnId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[hospital_servicio_id]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[hospital_servicio_id]" />
+                    <inputColumn
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].Columns[nombre_hospital]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="nombre_hospital"
+                      externalMetadataColumnId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_hospital]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[nombre_hospital]" />
+                    <inputColumn
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].Columns[ciudad_hospital]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ciudad_hospital"
+                      externalMetadataColumnId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[ciudad_hospital]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[ciudad_hospital]" />
+                    <inputColumn
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].Columns[nombre_servicio]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
-                      cachedName="nombre"
-                      externalMetadataColumnId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
-                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[nombre]" />
+                      cachedName="nombre_servicio"
+                      externalMetadataColumnId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_servicio]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[nombre_servicio]" />
                     <inputColumn
-                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].Columns[id]"
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].Columns[total_camas]"
                       cachedDataType="i4"
-                      cachedName="id"
-                      externalMetadataColumnId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[examen_id]"
-                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[id]" />
+                      cachedName="total_camas"
+                      externalMetadataColumnId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_camas]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[total_camas]" />
                     <inputColumn
-                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].Columns[descripcion]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="255"
-                      cachedName="descripcion"
-                      externalMetadataColumnId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion]"
-                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[descripcion]" />
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].Columns[total_camas_libres]"
+                      cachedDataType="i4"
+                      cachedName="total_camas_libres"
+                      externalMetadataColumnId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_camas_libres]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[total_camas_libres]" />
+                    <inputColumn
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].Columns[precio]"
+                      cachedDataType="r8"
+                      cachedName="precio"
+                      externalMetadataColumnId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[precio]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="nombre" />
-                    <externalMetadataColumn
-                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[examen_sk]"
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[hospital_servicio_sk]"
                       dataType="i4"
-                      name="examen_sk" />
+                      name="hospital_servicio_sk" />
                     <externalMetadataColumn
-                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[examen_id]"
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[hospital_servicio_id]"
                       dataType="i4"
-                      name="examen_id" />
+                      name="hospital_servicio_id" />
                     <externalMetadataColumn
-                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion]"
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_hospital]"
                       codePage="1252"
                       dataType="str"
                       length="255"
-                      name="descripcion" />
+                      name="nombre_hospital" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[ciudad_hospital]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="ciudad_hospital" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_servicio]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="nombre_servicio" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_camas]"
+                      dataType="i4"
+                      name="total_camas" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_camas_libres]"
+                      dataType="i4"
+                      name="total_camas_libres" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Load dim.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio]"
+                      dataType="numeric"
+                      name="precio"
+                      precision="10"
+                      scale="2" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -611,7 +735,7 @@ where [refTable].[examen_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[examen]</property>
+                  name="OpenRowset">[dbo].[hospital_servicio]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -668,46 +792,92 @@ where [refTable].[examen_id] = ?</property>
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].Columns[nombre]"
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].Columns[nombre_hospital]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="nombre_hospital"
+                      externalMetadataColumnId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_hospital]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[nombre_hospital]" />
+                    <inputColumn
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].Columns[ciudad_hospital]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ciudad_hospital"
+                      externalMetadataColumnId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ciudad_hospital]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[ciudad_hospital]" />
+                    <inputColumn
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].Columns[nombre_servicio]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
-                      cachedName="nombre"
-                      externalMetadataColumnId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
-                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[nombre]" />
+                      cachedName="nombre_servicio"
+                      externalMetadataColumnId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_servicio]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[nombre_servicio]" />
                     <inputColumn
-                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].Columns[descripcion]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="255"
-                      cachedName="descripcion"
-                      externalMetadataColumnId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion]"
-                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[descripcion]" />
-                    <inputColumn
-                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].Columns[examen_sk]"
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].Columns[total_camas]"
                       cachedDataType="i4"
-                      cachedName="examen_sk"
-                      externalMetadataColumnId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[examen_sk]"
-                      lineageId="Package\Load data\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[examen_sk]" />
+                      cachedName="total_camas"
+                      externalMetadataColumnId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_camas]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[total_camas]" />
+                    <inputColumn
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].Columns[total_camas_libres]"
+                      cachedDataType="i4"
+                      cachedName="total_camas_libres"
+                      externalMetadataColumnId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_camas_libres]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[total_camas_libres]" />
+                    <inputColumn
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].Columns[precio]"
+                      cachedDataType="r8"
+                      cachedName="precio"
+                      externalMetadataColumnId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio]"
+                      lineageId="Package\Load data\Get data.Outputs[Salida de origen de OLE DB].Columns[precio]" />
+                    <inputColumn
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].Columns[hospital_servicio_sk]"
+                      cachedDataType="i4"
+                      cachedName="hospital_servicio_sk"
+                      externalMetadataColumnId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[hospital_servicio_sk]"
+                      lineageId="Package\Load data\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[hospital_servicio_sk]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="nombre" />
-                    <externalMetadataColumn
-                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[examen_sk]"
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[hospital_servicio_sk]"
                       dataType="i4"
-                      name="examen_sk" />
+                      name="hospital_servicio_sk" />
                     <externalMetadataColumn
-                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion]"
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_hospital]"
                       codePage="1252"
                       dataType="str"
                       length="255"
-                      name="descripcion" />
+                      name="nombre_hospital" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ciudad_hospital]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="ciudad_hospital" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_servicio]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="nombre_servicio" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_camas]"
+                      dataType="i4"
+                      name="total_camas" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_camas_libres]"
+                      dataType="i4"
+                      name="total_camas_libres" />
+                    <externalMetadataColumn
+                      refId="Package\Load data\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio]"
+                      dataType="numeric"
+                      name="precio"
+                      precision="10"
+                      scale="2" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -761,7 +931,7 @@ where [refTable].[examen_id] = ?</property>
       DTS:refId="Package\sync staging"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{1BE272E0-843D-4338-83EC-B516247597D4}"
+      DTS:DTSID="{1F7BFDEA-8267-4A88-B172-7636AF4D15BA}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="sync staging"
@@ -770,15 +940,15 @@ where [refTable].[examen_id] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{FEDD6C4B-5958-46CE-AC5A-D7B07C854DDF}"
-          SQLTask:SqlStatementSource="EXECUTE [dbo].[DW_MergeDimExamen] " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{30BCBE2C-7019-470D-B7FC-0ACC0F0C5496}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[DW_MergeDimHospitalServicio] " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Update config"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{6070891D-15EF-4F76-BC17-15B20725F4BA}"
+      DTS:DTSID="{F5C17458-A68C-4170-8CAD-4B2C107099DA}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Update config"
@@ -787,8 +957,8 @@ where [refTable].[examen_id] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{FEDD6C4B-5958-46CE-AC5A-D7B07C854DDF}"
-          SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] &#xA;   @tableName = 'examen'&#xA;  ,@lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:Connection="{30BCBE2C-7019-470D-B7FC-0ACC0F0C5496}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] &#xA;   @tableName = 'hospital_servicio'&#xA;  ,@lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::dbts"
@@ -803,7 +973,7 @@ where [refTable].[examen_id] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción]"
       DTS:CreationName=""
-      DTS:DTSID="{297DCC3A-A46D-4181-982B-2E803A76712B}"
+      DTS:DTSID="{E24D0F5F-7968-44A7-8495-F2C95CAADFBC}"
       DTS:From="Package\Get Database RowVersion"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción"
@@ -811,7 +981,7 @@ where [refTable].[examen_id] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
       DTS:CreationName=""
-      DTS:DTSID="{8684D698-0C19-4EDA-8C02-180C5E170E44}"
+      DTS:DTSID="{61E2EC09-F92E-4977-B51A-96991C71BF5A}"
       DTS:From="Package\Get LastRowVersion"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 1"
@@ -819,7 +989,7 @@ where [refTable].[examen_id] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
       DTS:CreationName=""
-      DTS:DTSID="{D8C967C6-19CE-4396-A68F-ED2DA780D600}"
+      DTS:DTSID="{D144DC81-1E46-4CAD-80C2-4945AB503210}"
       DTS:From="Package\clean-up staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 2"
@@ -827,7 +997,7 @@ where [refTable].[examen_id] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
       DTS:CreationName=""
-      DTS:DTSID="{7FF35FAF-AC7C-4D7E-9E94-FA2E11F2B289}"
+      DTS:DTSID="{2E398BEB-7012-4D86-846E-0F2EDAC6D16B}"
       DTS:From="Package\Load data"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 3"
@@ -835,7 +1005,7 @@ where [refTable].[examen_id] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
       DTS:CreationName=""
-      DTS:DTSID="{A7D39F0F-DDE5-488B-84D9-8032721280F6}"
+      DTS:DTSID="{9D637064-EE7A-43F0-B37E-1D9180030288}"
       DTS:From="Package\sync staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 4"
@@ -1028,16 +1198,88 @@ where [refTable].[examen_id] = ?</property>
           Id="Package\Load data\Load staging"
           TopLeft="164,362" />
         <NodeLayout
+          Size="129,42"
+          Id="Package\Load data\Búsqueda"
+          TopLeft="348,222" />
+        <NodeLayout
           Size="124,42"
           Id="Package\Load data\Load dim"
           TopLeft="660,363" />
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Load data\Búsqueda"
-          TopLeft="348,222" />
+        <EdgeLayout
+          Id="Package\Load data.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="432.666666666667,264">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="289.333333333333,99"
+              Start="0,0"
+              End="289.333333333333,91.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.3277182235835" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.3277182235835"
+                    Point2="0,40.3277182235835"
+                    Point3="4,40.3277182235835" />
+                  <mssgle:LineSegment
+                    End="285.333333333333,40.3277182235835" />
+                  <mssgle:CubicBezierSegment
+                    Point1="285.333333333333,40.3277182235835"
+                    Point2="289.333333333333,40.3277182235835"
+                    Point3="289.333333333333,44.3277182235835" />
+                  <mssgle:LineSegment
+                    End="289.333333333333,91.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="37.7776432291665,45.3277182235835,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="392.333333333333,264">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-157.333333333333,98"
+              Start="0,0"
+              End="-157.333333333333,90.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.9203675344564" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.9203675344564"
+                    Point2="0,39.9203675344564"
+                    Point3="-4,39.9203675344564" />
+                  <mssgle:LineSegment
+                    End="-153.333333333333,39.9203675344564" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-153.333333333333,39.9203675344564"
+                    Point2="-157.333333333333,39.9203675344564"
+                    Point3="-157.333333333333,43.9203675344564" />
+                  <mssgle:LineSegment
+                    End="-157.333333333333,90.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-178.485690104167,44.9203675344564,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load data.Paths[Salida de origen de OLE DB]"
-          TopLeft="414.75,168">
+          TopLeft="412.5,168">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1055,78 +1297,6 @@ where [refTable].[examen_id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load data.Paths[Salida de entradas no coincidentes de búsqueda]"
-          TopLeft="438.666666666667,264">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="283.333333333333,99"
-              Start="0,0"
-              End="283.333333333333,91.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.2808022922636" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.2808022922636"
-                    Point2="0,40.2808022922636"
-                    Point3="4,40.2808022922636" />
-                  <mssgle:LineSegment
-                    End="279.333333333333,40.2808022922636" />
-                  <mssgle:CubicBezierSegment
-                    Point1="279.333333333333,40.2808022922636"
-                    Point2="283.333333333333,40.2808022922636"
-                    Point3="283.333333333333,44.2808022922636" />
-                  <mssgle:LineSegment
-                    End="283.333333333333,91.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="34.7776432291667,45.2808022922636,213.778046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load data.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="417,264">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-182,98"
-              Start="0,0"
-              End="-182,90.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,45"
-                    Point2="0,49"
-                    Point3="-4,49" />
-                  <mssgle:LineSegment
-                    End="-178,49" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-178,49"
-                    Point2="-182,49"
-                    Point3="-182,53" />
-                  <mssgle:LineSegment
-                    End="-182,90.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-190.8190234375,54,199.638046875,12.1953125"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1154,19 +1324,6 @@ where [refTable].[examen_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load data\Load dim">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Load data\Búsqueda">
     <Properties>
       <Property>
@@ -1177,7 +1334,7 @@ where [refTable].[examen_id] = ?</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[dim_examen]</Value>
+          type="q3:string">[dbo].[dim_hospital_servicio]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -1186,6 +1343,19 @@ where [refTable].[examen_id] = ?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data\Load dim">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

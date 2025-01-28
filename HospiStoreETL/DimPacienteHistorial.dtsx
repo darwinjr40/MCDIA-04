@@ -11,8 +11,8 @@
   DTS:LocaleID="16394"
   DTS:ObjectName="DimExamen"
   DTS:PackageType="5"
-  DTS:VersionBuild="82"
-  DTS:VersionGUID="{11787A70-1DBB-4538-87B6-D964B06FBABF}">
+  DTS:VersionBuild="86"
+  DTS:VersionGUID="{71758582-0461-4FB9-B92D-6DFD85B5947D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1257,6 +1257,13 @@ where [refTable].[paciente_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="x"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="35,40"
+          Id="c1a4ee42-22bc-4e18-b071-3c216aa32bf2"
+          TopLeft="1136,243" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

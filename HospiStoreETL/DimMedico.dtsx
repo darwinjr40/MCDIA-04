@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-7UPHGDJ\darwin"
   DTS:DTSID="{1C4C21F4-363E-44DD-BB32-B03CB7CBE755}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
   DTS:LocaleID="16394"
   DTS:ObjectName="DimMedico"
   DTS:PackageType="5"
-  DTS:VersionBuild="69"
-  DTS:VersionGUID="{D2D6561D-646D-4684-A52C-55DD782D2454}">
+  DTS:VersionBuild="70"
+  DTS:VersionGUID="{4D3A5FE2-F634-4B6F-ACFE-622AA38B67EE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1144,9 +1144,7 @@ where [refTable].[medico_id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1238,7 +1236,7 @@ where [refTable].[medico_id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>

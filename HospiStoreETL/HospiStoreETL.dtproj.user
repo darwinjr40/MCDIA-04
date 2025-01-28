@@ -10,6 +10,7 @@
         <WinAuthDomain />
         <ServerName />
         <PathOnServer />
+        <StartObjectID>DimHospitalServicio.dtsx</StartObjectID>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>
