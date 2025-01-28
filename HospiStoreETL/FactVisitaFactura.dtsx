@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/12/2024 1:23:12 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="FactVisitaFactura"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{2050EB7B-A252-43F8-A07F-31A223313E42}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{D482CA69-5AA5-4F5F-97CD-51D215B53EC4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreOLTP;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-FactVisitaFactura-{C9452996-F94B-4260-A23D-C2A9819A2752}localhost.HospiStoreOLTP;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreOLTP;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-FactVisitaFactura-{C9452996-F94B-4260-A23D-C2A9819A2752}localhost.HospiStoreOLTP;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -37,7 +37,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-FactVisitaFactura-{C230360C-6806-4BE6-A173-9AD84CAA3EC9}localhost.HospiStoreDW;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=HospiStoreDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-FactVisitaFactura-{C230360C-6806-4BE6-A173-9AD84CAA3EC9}localhost.HospiStoreDW;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -76,7 +76,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{C230360C-6806-4BE6-A173-9AD84CAA3EC9}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE vista_factura;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE visita_factura;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -93,6 +93,621 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Data Flow Task\dim_hospital_servicio"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="dim_hospital_servicio"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_hospital_servicio]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_hospital_servicio]) [refTable]
+where [refTable].[hospital_servicio_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="hospital_servicio_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hospital_servicio_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre_hospital" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ciudad_hospital" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="nombre_servicio" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="total_camas" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="total_camas_libres" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="precio" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[hospital_servicio_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\dim_hospital_servicio.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.HospiStoreDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.HospiStoreDW]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\dim_hospital_servicio.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_hospital_servicio.Inputs[Entrada de búsqueda].Columns[hospital_servicio_id]"
+                      cachedDataType="i4"
+                      cachedName="hospital_servicio_id"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[hospital_servicio_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">hospital_servicio_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\dim_hospital_servicio.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\Data Flow Task\dim_hospital_servicio.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_hospital_servicio.Outputs[Salida de entradas coincidentes de búsqueda].Columns[hospital_servicio_sk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\Data Flow Task\dim_hospital_servicio.Outputs[Salida de entradas coincidentes de búsqueda].Columns[hospital_servicio_sk]"
+                      name="hospital_servicio_sk"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">hospital_servicio_sk</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\dim_hospital_servicio.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\Data Flow Task\dim_hospital_servicio.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\dim_hospital_servicio.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\Data Flow Task\dim_hospital_servicio.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_hospital_servicio.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\dim_hospital_servicio.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_hospital_servicio.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\dim_hospital_servicio.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\dim_medico"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="dim_medico"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_medico]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_medico]) [refTable]
+where [refTable].[medico_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="medico_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="medico_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dni" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="nombre" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="apellido" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="fecha_nacimiento" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[medico_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\dim_medico.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.HospiStoreDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.HospiStoreDW]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\dim_medico.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_medico.Inputs[Entrada de búsqueda].Columns[medico_id]"
+                      cachedDataType="i4"
+                      cachedName="medico_id"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[medico_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">medico_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\dim_medico.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\Data Flow Task\dim_medico.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_medico.Outputs[Salida de entradas coincidentes de búsqueda].Columns[medico_sk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\Data Flow Task\dim_medico.Outputs[Salida de entradas coincidentes de búsqueda].Columns[medico_sk]"
+                      name="medico_sk"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">medico_sk</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\dim_medico.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\Data Flow Task\dim_medico.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\dim_medico.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\Data Flow Task\dim_medico.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_medico.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\dim_medico.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_medico.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\dim_medico.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\dim_paciente_historial"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="dim_paciente_historial"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_paciente_historial]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_paciente_historial]) [refTable]
+where [refTable].[paciente_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="paciente_historial_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="paciente_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dni" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="apellido" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="nombre" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="fecha_nacimiento" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="numero_seguridad_social" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sexo" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="codigo_historial_clinico" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[paciente_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\dim_paciente_historial.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.HospiStoreDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.HospiStoreDW]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\dim_paciente_historial.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_paciente_historial.Inputs[Entrada de búsqueda].Columns[paciente_id]"
+                      cachedDataType="i4"
+                      cachedName="paciente_id"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[paciente_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">paciente_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\dim_paciente_historial.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\Data Flow Task\dim_paciente_historial.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_paciente_historial.Outputs[Salida de entradas coincidentes de búsqueda].Columns[paciente_historial_sk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\Data Flow Task\dim_paciente_historial.Outputs[Salida de entradas coincidentes de búsqueda].Columns[paciente_historial_sk]"
+                      name="paciente_historial_sk"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">paciente_historial_sk</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\dim_paciente_historial.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\Data Flow Task\dim_paciente_historial.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\dim_paciente_historial.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\Data Flow Task\dim_paciente_historial.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_paciente_historial.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\dim_paciente_historial.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_paciente_historial.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\dim_paciente_historial.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\dim_visita_factura"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="dim_visita_factura"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[fact_visita_factura]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[fact_visita_factura]) [refTable]
+where [refTable].[visita_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="visita_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hospital_servicio_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="medico_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="paciente_historial_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="examen_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="total_factura" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;referenceColumn name="cantidad_examenes" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="monto_visita" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;referenceColumn name="monto_examen" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;referenceColumn name="nro_habitacion" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="fecha_ingreso" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="fecha_salida" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="fecha_ingreso_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="fecha_salida_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[visita_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\dim_visita_factura.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.HospiStoreDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.HospiStoreDW]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\dim_visita_factura.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_visita_factura.Inputs[Entrada de búsqueda].Columns[visita_id]"
+                      cachedDataType="i4"
+                      cachedName="visita_id"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[visita_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">visita_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\dim_visita_factura.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\Data Flow Task\dim_visita_factura.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\dim_visita_factura.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\Data Flow Task\dim_visita_factura.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\dim_visita_factura.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\Data Flow Task\dim_visita_factura.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_visita_factura.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\dim_visita_factura.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_visita_factura.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\dim_visita_factura.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Data Flow Task\get visita factura"
               componentClassID="Microsoft.OLEDBSource"
@@ -118,7 +733,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE [dbo].[GetVisitaFacturaChangesByRowVersion] @startRow= ?, @endRow =?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE  [dbo].[GetVisitaFacturaChangesByRowVersion]  @startRow = ?,  @endRow = ?</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -139,7 +754,7 @@
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping">"@starRow:Input",{7EA806A2-951E-4EB0-ACA2-86ECBB0D344B};"@endRow:Input",{35E0B3FA-B932-419B-AE42-7531DCE59493};</property>
+                  name="ParameterMapping">"@startRow:Input",{7EA806A2-951E-4EB0-ACA2-86ECBB0D344B};"@endRow:Input",{35E0B3FA-B932-419B-AE42-7531DCE59493};</property>
               </properties>
               <connections>
                 <connection
@@ -164,28 +779,6 @@
                       name="visita_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[diagnostico]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[diagnostico]"
-                      length="255"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[diagnostico]"
-                      name="diagnostico"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[tratamiento]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[tratamiento]"
-                      length="255"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[tratamiento]"
-                      name="tratamiento"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[nro_habitacion]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
@@ -193,42 +786,6 @@
                       externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[nro_habitacion]"
                       lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[nro_habitacion]"
                       name="nro_habitacion"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[factura_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[factura_id]"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[factura_id]"
-                      name="factura_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_emision]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[fecha_emision]"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_emision]"
-                      name="fecha_emision"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[total]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[total]"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[total]"
-                      name="total"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[cant_examenes]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[cant_examenes]"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[cant_examenes]"
-                      name="cant_examenes"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[monto_visita]"
@@ -249,15 +806,6 @@
                       name="monto_examen"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[visita_factura_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[visita_factura_id]"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[visita_factura_id]"
-                      name="visita_factura_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_ingreso_key]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
@@ -276,27 +824,72 @@
                       name="fecha_salida_key"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[hospital_servicio]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[total_factura]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[hospital_servicio]"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[hospital_servicio]"
-                      name="hospital_servicio"
+                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[total_factura]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[total_factura]"
+                      name="total_factura"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[paciente_hitorial]"
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[cantidad_examenes]"
                       dataType="i4"
-                      errorOrTruncationOperation="Conversion"
+                      errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[paciente_hitorial]"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[paciente_hitorial]"
-                      name="paciente_hitorial"
+                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[cantidad_examenes]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[cantidad_examenes]"
+                      name="cantidad_examenes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_ingreso]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[fecha_ingreso]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_ingreso]"
+                      name="fecha_ingreso"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_salida]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[fecha_salida]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_salida]"
+                      name="fecha_salida"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[hospital_servicio_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[hospital_servicio_id]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[hospital_servicio_id]"
+                      name="hospital_servicio_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[medico_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[medico_id]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[medico_id]"
+                      name="medico_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[paciente_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[paciente_id]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[paciente_id]"
+                      name="paciente_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[examen_id]"
                       dataType="i4"
-                      errorOrTruncationOperation="Conversion"
+                      errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[examen_id]"
                       lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[examen_id]"
@@ -310,37 +903,9 @@
                       dataType="i4"
                       name="visita_id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[diagnostico]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="diagnostico" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[tratamiento]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="tratamiento" />
-                    <externalMetadataColumn
                       refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[nro_habitacion]"
                       dataType="i4"
                       name="nro_habitacion" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[factura_id]"
-                      dataType="i4"
-                      name="factura_id" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[fecha_emision]"
-                      dataType="dbTimeStamp"
-                      name="fecha_emision" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[total]"
-                      dataType="r8"
-                      name="total" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[cant_examenes]"
-                      dataType="i4"
-                      name="cant_examenes" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[monto_visita]"
                       dataType="r8"
@@ -350,10 +915,6 @@
                       dataType="r8"
                       name="monto_examen" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[visita_factura_id]"
-                      dataType="i4"
-                      name="visita_factura_id" />
-                    <externalMetadataColumn
                       refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[fecha_ingreso_key]"
                       dataType="i4"
                       name="fecha_ingreso_key" />
@@ -362,13 +923,33 @@
                       dataType="i4"
                       name="fecha_salida_key" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[hospital_servicio]"
-                      dataType="i4"
-                      name="hospital_servicio" />
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[total_factura]"
+                      dataType="r8"
+                      name="total_factura" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[paciente_hitorial]"
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[cantidad_examenes]"
                       dataType="i4"
-                      name="paciente_hitorial" />
+                      name="cantidad_examenes" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[fecha_ingreso]"
+                      dataType="dbTimeStamp"
+                      name="fecha_ingreso" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[fecha_salida]"
+                      dataType="dbTimeStamp"
+                      name="fecha_salida" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[hospital_servicio_id]"
+                      dataType="i4"
+                      name="hospital_servicio_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[medico_id]"
+                      dataType="i4"
+                      name="medico_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[paciente_id]"
+                      dataType="i4"
+                      name="paciente_id" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].ExternalColumns[examen_id]"
                       dataType="i4"
@@ -381,34 +962,40 @@
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[visita_factura_id]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[visita_factura_id]"
-                      name="visita_factura_id" />
-                    <outputColumn
                       refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[visita_id]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[visita_id]"
                       name="visita_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[hospital_servicio_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[hospital_servicio_id]"
+                      name="hospital_servicio_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[medico_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[medico_id]"
+                      name="medico_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[paciente_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[paciente_id]"
+                      name="paciente_id" />
                     <outputColumn
                       refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[examen_id]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[examen_id]"
                       name="examen_id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[diagnostico]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[diagnostico]"
-                      name="diagnostico" />
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[total_factura]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[total_factura]"
+                      name="total_factura" />
                     <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[tratamiento]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[tratamiento]"
-                      name="tratamiento" />
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[cantidad_examenes]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[cantidad_examenes]"
+                      name="cantidad_examenes" />
                     <outputColumn
                       refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[fecha_ingreso_key]"
                       dataType="i4"
@@ -425,35 +1012,15 @@
                       lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[nro_habitacion]"
                       name="nro_habitacion" />
                     <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[hospital_servicio]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[hospital_servicio]"
-                      name="hospital_servicio" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[paciente_hitorial]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[paciente_hitorial]"
-                      name="paciente_hitorial" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[factura_id]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[factura_id]"
-                      name="factura_id" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[fecha_emision]"
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[fecha_ingreso]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[fecha_emision]"
-                      name="fecha_emision" />
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[fecha_ingreso]"
+                      name="fecha_ingreso" />
                     <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[total]"
-                      dataType="r8"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[total]"
-                      name="total" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[cant_examenes]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[cant_examenes]"
-                      name="cant_examenes" />
+                      refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[fecha_salida]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[fecha_salida]"
+                      name="fecha_salida" />
                     <outputColumn
                       refId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Error Output].Columns[monto_visita]"
                       dataType="r8"
@@ -482,11 +1049,260 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\lookpu dim_examen"
+              refId="Package\Data Flow Task\load staging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="load staging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[visita_factura]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\load staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.HospiStoreDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.HospiStoreDW]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[visita_id]"
+                      cachedDataType="i4"
+                      cachedName="visita_id"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[visita_id]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[visita_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[nro_habitacion]"
+                      cachedDataType="i4"
+                      cachedName="nro_habitacion"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[nro_habitacion]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[nro_habitacion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[monto_visita]"
+                      cachedDataType="r8"
+                      cachedName="monto_visita"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[monto_visita]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[monto_visita]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[monto_examen]"
+                      cachedDataType="r8"
+                      cachedName="monto_examen"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[monto_examen]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[monto_examen]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[fecha_ingreso_key]"
+                      cachedDataType="i4"
+                      cachedName="fecha_ingreso_key"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_ingreso_key]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_ingreso_key]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[fecha_salida_key]"
+                      cachedDataType="i4"
+                      cachedName="fecha_salida_key"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_salida_key]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_salida_key]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[total_factura]"
+                      cachedDataType="r8"
+                      cachedName="total_factura"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_factura]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[total_factura]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[cantidad_examenes]"
+                      cachedDataType="i4"
+                      cachedName="cantidad_examenes"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[cantidad_examenes]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[cantidad_examenes]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[fecha_ingreso]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="fecha_ingreso"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_ingreso]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_ingreso]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[fecha_salida]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="fecha_salida"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_salida]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_salida]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[examen_sk]"
+                      cachedDataType="i4"
+                      cachedName="examen_sk"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[examen_sk]"
+                      lineageId="Package\Data Flow Task\lookup dim_examen.Outputs[Lookup Match Output].Columns[examen_sk]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[medico_sk]"
+                      cachedDataType="i4"
+                      cachedName="medico_sk"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[medico_sk]"
+                      lineageId="Package\Data Flow Task\dim_medico.Outputs[Salida de entradas coincidentes de búsqueda].Columns[medico_sk]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[paciente_historial_sk]"
+                      cachedDataType="i4"
+                      cachedName="paciente_historial_sk"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[paciente_historial_sk]"
+                      lineageId="Package\Data Flow Task\dim_paciente_historial.Outputs[Salida de entradas coincidentes de búsqueda].Columns[paciente_historial_sk]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].Columns[hospital_servicio_sk]"
+                      cachedDataType="i4"
+                      cachedName="hospital_servicio_sk"
+                      externalMetadataColumnId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[hospital_servicio_sk]"
+                      lineageId="Package\Data Flow Task\dim_hospital_servicio.Outputs[Salida de entradas coincidentes de búsqueda].Columns[hospital_servicio_sk]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[visita_id]"
+                      dataType="i4"
+                      name="visita_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[hospital_servicio_sk]"
+                      dataType="i4"
+                      name="hospital_servicio_sk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[medico_sk]"
+                      dataType="i4"
+                      name="medico_sk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[paciente_historial_sk]"
+                      dataType="i4"
+                      name="paciente_historial_sk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[examen_sk]"
+                      dataType="i4"
+                      name="examen_sk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_factura]"
+                      dataType="numeric"
+                      name="total_factura"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[cantidad_examenes]"
+                      dataType="i4"
+                      name="cantidad_examenes" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[monto_visita]"
+                      dataType="numeric"
+                      name="monto_visita"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[monto_examen]"
+                      dataType="numeric"
+                      name="monto_examen"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[nro_habitacion]"
+                      dataType="i4"
+                      name="nro_habitacion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_ingreso]"
+                      dataType="dbDate"
+                      name="fecha_ingreso" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_salida]"
+                      dataType="dbDate"
+                      name="fecha_salida" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_ingreso_key]"
+                      dataType="i4"
+                      name="fecha_ingreso_key" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_salida_key]"
+                      dataType="i4"
+                      name="fecha_salida_key" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\load staging.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\load staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\load staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\load staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\load staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\lookup dim_examen"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="lookpu dim_examen"
+              name="lookup dim_examen"
               usesDispositions="true"
               version="6">
               <properties>
@@ -502,7 +1318,7 @@
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_examen]) [refTable]
-where [refTable].[hosptal_servicio_examen_id] = ?</property>
+where [refTable].[examen_id] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -533,7 +1349,7 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="examen_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hosptal_servicio_examen_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="examen_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="descripcion" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="examen_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="examen_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="descripcion" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -550,7 +1366,7 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\lookpu dim_examen.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task\lookup dim_examen.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[Target.HospiStoreDW]"
                   connectionManagerRefId="Package.ConnectionManagers[Target.HospiStoreDW]"
                   description="Connection manager used to access lookup data."
@@ -558,22 +1374,22 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\lookpu dim_examen.Inputs[Lookup Input]"
+                  refId="Package\Data Flow Task\lookup dim_examen.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\lookpu dim_examen.Inputs[Lookup Input].Columns[examen_id]"
+                      refId="Package\Data Flow Task\lookup dim_examen.Inputs[Lookup Input].Columns[examen_id]"
                       cachedDataType="i4"
                       cachedName="examen_id"
                       lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[examen_id]">
                       <properties>
                         <property
                           dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">hosptal_servicio_examen_id</property>
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">examen_id</property>
                         <property
                           dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
                           name="CopyFromReferenceColumn" />
                       </properties>
                     </inputColumn>
@@ -583,24 +1399,24 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\lookpu dim_examen.Outputs[Lookup Match Output]"
+                  refId="Package\Data Flow Task\lookup dim_examen.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task\lookpu dim_examen.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task\lookup dim_examen.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\lookpu dim_examen.Outputs[Lookup Match Output].Columns[examen_sk]"
+                      refId="Package\Data Flow Task\lookup dim_examen.Outputs[Lookup Match Output].Columns[examen_sk]"
                       dataType="i4"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\lookpu dim_examen.Outputs[Lookup Match Output].Columns[examen_sk]"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\Data Flow Task\lookup dim_examen.Outputs[Lookup Match Output].Columns[examen_sk]"
                       name="examen_sk"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
                           name="CopyFromReferenceColumn">examen_sk</property>
                       </properties>
                     </outputColumn>
@@ -608,30 +1424,279 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\lookpu dim_examen.Outputs[Lookup No Match Output]"
+                  refId="Package\Data Flow Task\lookup dim_examen.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task\lookpu dim_examen.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task\lookup dim_examen.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\lookpu dim_examen.Outputs[Lookup Error Output]"
+                  refId="Package\Data Flow Task\lookup dim_examen.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task\lookpu dim_examen.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task\lookup dim_examen.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\lookpu dim_examen.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\lookup dim_examen.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\lookpu dim_examen.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\lookup dim_examen.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\lookpu dim_examen.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\lookup dim_examen.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\lookpu dim_examen.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\lookup dim_examen.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\new data"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="new data"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[fact_visita_factura]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\new data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.HospiStoreDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.HospiStoreDW]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[visita_id]"
+                      cachedDataType="i4"
+                      cachedName="visita_id"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[visita_id]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[visita_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[nro_habitacion]"
+                      cachedDataType="i4"
+                      cachedName="nro_habitacion"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[nro_habitacion]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[nro_habitacion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[monto_visita]"
+                      cachedDataType="r8"
+                      cachedName="monto_visita"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[monto_visita]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[monto_visita]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[monto_examen]"
+                      cachedDataType="r8"
+                      cachedName="monto_examen"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[monto_examen]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[monto_examen]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[fecha_ingreso_key]"
+                      cachedDataType="i4"
+                      cachedName="fecha_ingreso_key"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_ingreso_key]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_ingreso_key]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[fecha_salida_key]"
+                      cachedDataType="i4"
+                      cachedName="fecha_salida_key"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_salida_key]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_salida_key]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[total_factura]"
+                      cachedDataType="r8"
+                      cachedName="total_factura"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_factura]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[total_factura]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[cantidad_examenes]"
+                      cachedDataType="i4"
+                      cachedName="cantidad_examenes"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[cantidad_examenes]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[cantidad_examenes]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[fecha_ingreso]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="fecha_ingreso"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_ingreso]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_ingreso]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[fecha_salida]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="fecha_salida"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_salida]"
+                      lineageId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output].Columns[fecha_salida]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[examen_sk]"
+                      cachedDataType="i4"
+                      cachedName="examen_sk"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[examen_sk]"
+                      lineageId="Package\Data Flow Task\lookup dim_examen.Outputs[Lookup Match Output].Columns[examen_sk]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[medico_sk]"
+                      cachedDataType="i4"
+                      cachedName="medico_sk"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[medico_sk]"
+                      lineageId="Package\Data Flow Task\dim_medico.Outputs[Salida de entradas coincidentes de búsqueda].Columns[medico_sk]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[paciente_historial_sk]"
+                      cachedDataType="i4"
+                      cachedName="paciente_historial_sk"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[paciente_historial_sk]"
+                      lineageId="Package\Data Flow Task\dim_paciente_historial.Outputs[Salida de entradas coincidentes de búsqueda].Columns[paciente_historial_sk]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].Columns[hospital_servicio_sk]"
+                      cachedDataType="i4"
+                      cachedName="hospital_servicio_sk"
+                      externalMetadataColumnId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[hospital_servicio_sk]"
+                      lineageId="Package\Data Flow Task\dim_hospital_servicio.Outputs[Salida de entradas coincidentes de búsqueda].Columns[hospital_servicio_sk]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[visita_id]"
+                      dataType="i4"
+                      name="visita_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[hospital_servicio_sk]"
+                      dataType="i4"
+                      name="hospital_servicio_sk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[medico_sk]"
+                      dataType="i4"
+                      name="medico_sk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[paciente_historial_sk]"
+                      dataType="i4"
+                      name="paciente_historial_sk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[examen_sk]"
+                      dataType="i4"
+                      name="examen_sk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_factura]"
+                      dataType="numeric"
+                      name="total_factura"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[cantidad_examenes]"
+                      dataType="i4"
+                      name="cantidad_examenes" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[monto_visita]"
+                      dataType="numeric"
+                      name="monto_visita"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[monto_examen]"
+                      dataType="numeric"
+                      name="monto_examen"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[nro_habitacion]"
+                      dataType="i4"
+                      name="nro_habitacion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_ingreso]"
+                      dataType="dbDate"
+                      name="fecha_ingreso" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_salida]"
+                      dataType="dbDate"
+                      name="fecha_salida" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_ingreso_key]"
+                      dataType="i4"
+                      name="fecha_ingreso_key" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_salida_key]"
+                      dataType="i4"
+                      name="fecha_salida_key" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\new data.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\new data.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\new data.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\new data.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\new data.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -642,10 +1707,40 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
           </components>
           <paths>
             <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task\dim_medico.Inputs[Entrada de búsqueda]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\lookup dim_examen.Outputs[Lookup Match Output]" />
+            <path
               refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\lookpu dim_examen.Inputs[Lookup Input]"
+              endId="Package\Data Flow Task\lookup dim_examen.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Data Flow Task\get visita factura.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Salida de entradas coincidentes de búsqueda]"
+              endId="Package\Data Flow Task\dim_paciente_historial.Inputs[Entrada de búsqueda]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\Data Flow Task\dim_medico.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Salida de entradas coincidentes de búsqueda1]"
+              endId="Package\Data Flow Task\dim_hospital_servicio.Inputs[Entrada de búsqueda]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\Data Flow Task\dim_paciente_historial.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Salida de entradas coincidentes de búsqueda2]"
+              endId="Package\Data Flow Task\dim_visita_factura.Inputs[Entrada de búsqueda]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\Data Flow Task\dim_hospital_servicio.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Salida de entradas coincidentes de búsqueda3]"
+              endId="Package\Data Flow Task\load staging.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\Data Flow Task\dim_visita_factura.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Salida de entradas no coincidentes de búsqueda]"
+              endId="Package\Data Flow Task\new data.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de entradas no coincidentes de búsqueda"
+              startId="Package\Data Flow Task\dim_visita_factura.Outputs[Salida de entradas no coincidentes de búsqueda]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -667,7 +1762,7 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
           SQLTask:SqlStatementSource="EXECUTE [dbo].[GetDatabaseRowVersion]"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
-            SQLTask:ResultName="DBT"
+            SQLTask:ResultName="DBTS"
             SQLTask:DtsVariableName="User::dbts" />
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
@@ -691,6 +1786,47 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
           <SQLTask:ResultBinding
             SQLTask:ResultName="Last_Row_Version"
             SQLTask:DtsVariableName="User::LastRowValue" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\sync staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{A7D84784-B1DA-4DF7-9FD7-E7E1FCB248D3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="sync staging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C230360C-6806-4BE6-A173-9AD84CAA3EC9}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[DW_MergeFactVisitaFactura]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\update config"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{22C37AAD-49A9-4276-B811-E7B79864D647}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="update config"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C230360C-6806-4BE6-A173-9AD84CAA3EC9}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] &#xA;   @tableName = 'visita_factura'&#xA;  ,@lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::dbts"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -720,6 +1856,22 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 2"
       DTS:To="Package\Data Flow Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{6B3DA645-B9D9-495A-AC86-4426FD4991DC}"
+      DTS:From="Package\Data Flow Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 3"
+      DTS:To="Package\sync staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{9C31DDD9-A055-4FDD-A9D3-FAA5F4212840}"
+      DTS:From="Package\sync staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 4"
+      DTS:To="Package\update config" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
@@ -732,9 +1884,17 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="201,42"
+          Size="164,42"
+          Id="Package\Clean-up Staging"
+          TopLeft="405,187" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task"
+          TopLeft="411,271" />
+        <NodeLayout
+          Size="209,42"
           Id="Package\Get Database RowVersion"
           TopLeft="390,32" />
         <NodeLayout
@@ -742,12 +1902,12 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
           Id="Package\Get Visita RowVersion"
           TopLeft="404,104" />
         <NodeLayout
-          Size="159,42"
-          Id="Package\Clean-up Staging"
-          TopLeft="405,187" />
+          Size="140,42"
+          Id="Package\sync staging"
+          TopLeft="388,366" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="492.75,74">
+          TopLeft="494.75,74">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -773,9 +1933,9 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-10.5,41"
+              EndConnector="-8,41"
               Start="0,0"
-              End="-10.5,33.5">
+              End="-8,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -786,13 +1946,69 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
                     Point2="0,20.5"
                     Point3="-4,20.5" />
                   <mssgle:LineSegment
-                    End="-6.5,20.5" />
+                    End="-4,20.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-6.5,20.5"
-                    Point2="-10.5,20.5"
-                    Point3="-10.5,24.5" />
+                    Point1="-4,20.5"
+                    Point2="-8,20.5"
+                    Point3="-8,24.5" />
                   <mssgle:LineSegment
-                    End="-10.5,33.5" />
+                    End="-8,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="487.75,229">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="488.5,313">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-30.5,53"
+              Start="0,0"
+              End="-30.5,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5"
+                    Point2="0,26.5"
+                    Point3="-4,26.5" />
+                  <mssgle:LineSegment
+                    End="-26.5,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26.5,26.5"
+                    Point2="-30.5,26.5"
+                    Point3="-30.5,30.5" />
+                  <mssgle:LineSegment
+                    End="-30.5,45.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -802,23 +2018,35 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="151,42"
-          Id="Package\Data Flow Task"
-          TopLeft="637,188" />
+          Size="145,42"
+          Id="Package\update config"
+          TopLeft="374,451" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="564,208.5">
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="458,408">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="73,0"
+              EndConnector="-11.5,43"
               Start="0,0"
-              End="65.5,0">
+              End="-11.5,35.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="65.5,0" />
+                    End="0,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5"
+                    Point2="0,21.5"
+                    Point3="-4,21.5" />
+                  <mssgle:LineSegment
+                    End="-7.5,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.5,21.5"
+                    Point2="-11.5,21.5"
+                    Point3="-11.5,25.5" />
+                  <mssgle:LineSegment
+                    End="-11.5,35.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -834,47 +2062,239 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="158,42"
           Id="Package\Data Flow Task\get visita factura"
-          TopLeft="232,32" />
+          TopLeft="238,6" />
         <NodeLayout
-          Size="174,42"
-          Id="Package\Data Flow Task\lookpu dim_examen"
-          TopLeft="255,126" />
+          Size="138,42"
+          Id="Package\Data Flow Task\dim_medico"
+          TopLeft="250,133" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Data Flow Task\dim_visita_factura"
+          TopLeft="247,364" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Data Flow Task\lookup dim_examen"
+          TopLeft="234,67" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\Data Flow Task\new data"
+          TopLeft="488,477" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Data Flow Task\load staging"
+          TopLeft="118,471" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Data Flow Task\dim_hospital_servicio"
+          TopLeft="233,296" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Data Flow Task\dim_paciente_historial"
+          TopLeft="226,206" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="311,74">
+          Id="Package\Data Flow Task.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="357.666666666667,406">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="31,52"
+              EndConnector="192.333333333333,71"
               Start="0,0"
-              End="31,44.5">
+              End="192.333333333333,63.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22" />
+                    End="0,24.8018867924528" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22"
-                    Point2="0,26"
-                    Point3="4,26" />
+                    Point1="0,24.8018867924528"
+                    Point2="0,28.8018867924528"
+                    Point3="4,28.8018867924528" />
                   <mssgle:LineSegment
-                    End="27,26" />
+                    End="188.333333333333,28.8018867924528" />
                   <mssgle:CubicBezierSegment
-                    Point1="27,26"
-                    Point2="31,26"
-                    Point3="31,30" />
+                    Point1="188.333333333333,28.8018867924528"
+                    Point2="192.333333333333,28.8018867924528"
+                    Point3="192.333333333333,32.8018867924528" />
                   <mssgle:LineSegment
-                    End="31,44.5" />
+                    End="192.333333333333,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-10.7223567708335,33.8018867924528,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Salida de entradas coincidentes de búsqueda3]"
+          TopLeft="304.333333333333,406">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-117.333333333333,65"
+              Start="0,0"
+              End="-117.333333333333,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.3679245283019" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.3679245283019"
+                    Point2="0,26.3679245283019"
+                    Point3="-4,26.3679245283019" />
+                  <mssgle:LineSegment
+                    End="-113.333333333333,26.3679245283019" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-113.333333333333,26.3679245283019"
+                    Point2="-117.333333333333,26.3679245283019"
+                    Point3="-117.333333333333,30.3679245283019" />
+                  <mssgle:LineSegment
+                    End="-117.333333333333,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-158.485690104167,31.3679245283019,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Salida de entradas coincidentes de búsqueda2]"
+          TopLeft="328,338">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,3.15234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Salida de entradas coincidentes de búsqueda1]"
+          TopLeft="322.75,248">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,14.15234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="319.75,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,5.65234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="238,27">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-4,61"
+              Start="0,0"
+              End="-11.5,61">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-22.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,0"
+                    Point2="-26.5,0"
+                    Point3="-26.5,4" />
+                  <mssgle:LineSegment
+                    End="-26.5,57" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26.5,57"
+                    Point2="-26.5,61"
+                    Point3="-22.5,61" />
+                  <mssgle:LineSegment
+                    End="-11.5,61" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="320.75,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,2.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -889,7 +2309,53 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\lookpu dim_examen">
+    design-time-name="Package\Data Flow Task\dim_medico">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_medico]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\dim_visita_factura">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[fact_visita_factura]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\lookup dim_examen">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -905,6 +2371,78 @@ where [refTable].[hosptal_servicio_examen_id] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\new data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\load staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\dim_hospital_servicio">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_hospital_servicio]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\dim_paciente_historial">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_paciente_historial]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

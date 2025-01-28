@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-7UPHGDJ</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAOPifNFt0AkyXtxk01eMycgAAAAACAAAAAAAQZgAAAAEAACAAAACj8m2H1YJaVagO2i/YF37pI7Hs/K+eGrGaYpYPXnOR7gAAAAAOgAAAAAIAACAAAADRlDVcFH+E2U0kHAwjc7a1KXfdZVMC0hN/mKybPfBSFZAAAACmeizr4+39z2DLxZmHz7oEXn48d1aNeqVxNXKRLPJNy8uq+Hj4tQ/WNe5XvAq+1hun6+Ajp+N0mAW5Dgf47ZMrq3NFwjH278cpH/9bNV8GOoBj/Aa3bbCh3P76ax9oTf1sRM3T3UVfmKP5ez7WJXqKSxqw4dIVL1p6Me24eo0DF6C7L4MeMYiG1jyDUXMSBMhAAAAAY1iZM9t5gS2rzGs075tgqTe7J8AcDrbl20HN9vM2zqct18+G4gigfrsoeTdvf+lZ+gG5fsJ9cqx0yrgRhMe24A==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAOPifNFt0AkyXtxk01eMycgAAAAACAAAAAAAQZgAAAAEAACAAAADdNyEgIkNBDHQGQLaeFeSchv8qgEVwON7AwgrwOPsAngAAAAAOgAAAAAIAACAAAAAwbQDLwHssQHnzooISq8lDPYS+80umS7gAW6V7aZ2FCZAAAACZkM2C/XeuVfiKhUl87gHbkpYZqsD0kggzzRIcJW4wZ5zdoSYHH6pqJk/nvuEa+c8NteDTrQjSbhIdujmmVt24hKeGIQReUNBycG2trooU4NgeW8ifzJYQgMvsmLDfdp8MXVmtokw2X5PCLPEAD5n8N7qjSw3QEY58Bne9xBHjTylTPUxt9Aw7ShxQddXAVJtAAAAA9xPmG6phvvmXMMghobHZ8DiSfSSvAdmYfDRm6ohTbOjw2XYS8ONuYMEcEkZinX/HLIHr2lL/iRAt7GcUhJ6FiQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -674,10 +674,10 @@
                 <SSIS:Property SSIS:Name="Name">DimExamen</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">83</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">87</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{3C3EECF6-D713-4A41-B388-E2D128FE062E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{25C84830-AAF0-4119-8013-91FA56342ED7}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -988,10 +988,10 @@
                 <SSIS:Property SSIS:Name="Name">FactVisitaFactura</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">13</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">41</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2050EB7B-A252-43F8-A07F-31A223313E42}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D482CA69-5AA5-4F5F-97CD-51D215B53EC4}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1024,7 +1024,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=localhost;Initial Catalog=HospiStoreOLTP;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-FactVisitaFactura-{C9452996-F94B-4260-A23D-C2A9819A2752}localhost.HospiStoreOLTP;Auto Translate=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=localhost;Initial Catalog=HospiStoreOLTP;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-FactVisitaFactura-{C9452996-F94B-4260-A23D-C2A9819A2752}localhost.HospiStoreOLTP;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1172,7 +1172,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=localhost;Initial Catalog=HospiStoreDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-FactVisitaFactura-{C230360C-6806-4BE6-A173-9AD84CAA3EC9}localhost.HospiStoreDW;Auto Translate=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=localhost;Initial Catalog=HospiStoreDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-FactVisitaFactura-{C230360C-6806-4BE6-A173-9AD84CAA3EC9}localhost.HospiStoreDW;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>

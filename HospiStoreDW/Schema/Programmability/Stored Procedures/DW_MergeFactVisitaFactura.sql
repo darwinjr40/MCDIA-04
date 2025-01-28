@@ -14,8 +14,9 @@ BEGIN
 	   ,[nro_habitacion]     = se.[nro_habitacion]
 	   ,[fecha_ingreso]     = se.[fecha_ingreso]
 	   ,[fecha_salida]     = se.[fecha_salida]
-	   ,[fecha_id]     = se.[fecha_id]
+	   ,[fecha_ingreso_key]     = se.[fecha_ingreso_key]
+	   ,[fecha_salida_key]     = se.[fecha_salida_key]
 	FROM [dbo].[fact_visita_factura]    de
-	INNER JOIN [dbo].[visita_factura] se ON (de.[visita_id]=se.[visita_id])
+	INNER JOIN [dbo].[visita_factura] se ON (de.[visita_id] = se.[visita_id])
 END
 GO
