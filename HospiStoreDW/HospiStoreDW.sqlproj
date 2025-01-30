@@ -92,5 +92,6 @@
   <ItemGroup>
     <PostDeploy Include="scripts\PackageConfig.data.sql" />
     <None Include="scripts\DimFechaScript.sql" />
+    <None Include="scripts\DimDate.data.sql" />
   </ItemGroup>
 </Project>

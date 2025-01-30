@@ -17,6 +17,6 @@
     FOREIGN KEY (medico_sk) REFERENCES dim_medico(medico_sk),
     FOREIGN KEY (paciente_historial_sk) REFERENCES dim_paciente_historial(paciente_historial_sk),
     FOREIGN KEY (examen_sk) REFERENCES dim_examen(examen_sk),
-    --FOREIGN KEY (fecha_ingreso_key) REFERENCES dim_fecha(fecha_id),
-    --FOREIGN KEY (fecha_salida_key) REFERENCES dim_fecha(fecha_id),    
+    FOREIGN KEY (fecha_ingreso_key) REFERENCES dim_fecha(fecha_id),
+    FOREIGN KEY (fecha_salida_key) REFERENCES dim_fecha(fecha_id),    
 );
